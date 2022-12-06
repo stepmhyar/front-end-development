@@ -1,0 +1,77 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+pui
+*_autoload*
+_act*
+*.swo
+*.swp
+*.swn
+*.tmp
+*.zip
+*.rar
+dist/**/*.map
+._pylon.dat
+.gd*
+nginx/used
+tmp
+npm-debug.log
+cscop*
+runtime/*
+run/*
+avatar_origin/*
+_notes
+.rigger.dat
+rigger.log
+_prj/*tags
+node_modules/*
+.idea/*
+*.DS_Store
+pylon_tags
+tags
+phpunit.xml.dist
+rg.fail
+*_tags
+.tags
+.tags_sorted_by_file
+test/redis_test.php
+.jshintrc
+sftp-config.json
+.jsbeautifyrc
+*.sublime-project
+*.sublime-workspace
+node_modules/
+*.gz
+.vscode
+.launch
+
+# dependencies
+/node_modules
+# roadhog-api-doc ignore
+/src/utils/request-temp.js
+_roadhog-api-doc
+
+# production
+dist/debug/*
+dist/static
+dist/*.js
+dist/*.json
+dist/*.css
+
+# misc
+.DS_Store
+npm-debug.log*
+yarn-error.log
+
+/coverage
+.idea
+yarn.lock
+*bak
+jsconfig.json
+
+# service
+/server/web-config.js
+
+#sftp
+.ftppass
+
+# /projecks
