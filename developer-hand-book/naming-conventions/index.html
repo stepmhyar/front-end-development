@@ -83,6 +83,7 @@
     <button class="button encode button--rayen button--border-medium button--text-thin button--size-l button--inverted" data-text="切换(_)"><span>切换(_)</span></button>
     <button class="encode-small-hump button button--rayen button--border-medium button--text-thin button--size-l button--inverted" data-text="小驼峰输出"><span>小驼峰输出</span></button>
     <button class="encode-big-hump button button--rayen button--border-medium button--text-thin button--size-l button--inverted" data-text="大驼峰输出"><span>大驼峰输出</span></button>
+    <button class="encode-big button button--rayen button--border-medium button--text-thin button--size-l button--inverted" data-text="大小写切换"><span>大小写切换</span></button>
     <hr style="margin: 20px 13px;">
   </div>
   <div class="content">
@@ -215,5 +216,16 @@ $('body').on('click', '.encode-big-hump', function(){
   $('.content_small input').val(str)
 });
 
+$('body').on('click', '.encode-big', function(){
+  const encode = $('.content_small input').val()
+  let str = encode.split('-').join('')
+  const reg = /^[A-Z]+$/
+  if (reg.test(str)){
+    str = str.toLowerCase()
+  } else {
+    str = str.toUpperCase()
+  }
+  $('.content_small input').val(str)
+});
 </script>
 </html>
