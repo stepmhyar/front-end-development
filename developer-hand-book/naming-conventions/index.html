@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naming Conventions</title>
+
+  <style>
+    body{font-family:"Microsoft YaHei";font-size:12px;background:#FFF;}
+    body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{padding:0;margin:0}
+    fieldset,img{border:0;vertical-align:bottom}
+    address,caption,cite,code,dfn,em,th,var{font-weight:normal;font-style:normal}
+    ol,ul{list-style:none}
+    caption,th{text-align:left}
+    h1,h2,h3,h4,h5,h6{font-weight:normal;font-size:100%}
+    abbr,acronym{border:0}
+    button,input,select,textarea{font-size:100%;cursor:pointer}
+    input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit}
+    input{border:0}
+    .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .clear{clear:both;line-height:0;height:0;font-size:0}
+    input[type="reset"]::-moz-focus-inner,input[type="button"]::-moz-focus-inner,input[type="submit"]::-moz-focus-inner,input[type="file"]>input[type="button"]::-moz-focus-inner{border:0;padding:0}
+    a{text-decoration:none}
+  </style>
+  <style>
+    body {background:#1c2541;}
+    title {display:flex;align-items:center;justify-content:center;height:200px; font-size: 32px; color:#fff;}
+    .content {margin: 0 auto; width: 1200px; overflow: hidden; text-align: center;}
+    .content_small {display: none; margin: 0 auto; width: 1200px; overflow: hidden; text-align: center;}
+    .pop { display: none; position: fixed; top: 20px; left: 50%; width: 100px; height: 25px; font-size: 14px; line-height: 25px; background-color: rgba(0, 0, 0, .3); color: #fff; margin-left: -50px; text-align: center; border: #7986cb 1px solid; border-radius: 7px;}
+    .top { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 14px; line-height: 50px; background-color: rgba(0, 0, 0, .3); color: #fff; margin-left: -50px; text-align: center; border: #7986cb 1px solid; border-radius: 7px; cursor: pointer;}
+    .index { position: fixed; top: 20px; left: 70px; width: 50px; height: 50px; font-size: 14px; line-height: 50px; color: #fff; margin-left: -50px; text-align: center;  border-radius: 7px; cursor: pointer;}
+    .setting { position: fixed; top: 20px; left: 140px; width: 50px; height: 50px; font-size: 14px; line-height: 50px; color: #fff; margin-left: -50px; text-align: center;  border-radius: 7px; cursor: pointer;padding: 5px;box-sizing: border-box;}
+    
+    .content_small title {height:32px;}
+    .content_small input {height:32px; width: 300px; border-radius: 5px; margin: 20px; font-size: 16px; text-align: center;}
+  </style>
+  <style>
+    .content .button{min-width:150px;max-width:250px;margin:1em;padding:0.5em 2em;border:none;background:none;color:inherit;vertical-align:middle;position:relative;z-index:1;-webkit-backface-visibility:hidden;-moz-osx-font-smoothing:grayscale;}
+    .content .button--border-thin{border:1px solid;}
+    .content .button--border-medium{border:2px solid; font-size: 20px; font-weight: 700;}
+    .content .button--border-thick{border:3px solid;}
+    .content .button--round-s.button--quidel::after{border-radius:3px;}
+    .content .button, .content .button:after, .content .button:before {-webkit-box-sizing: border-box;box-sizing: border-box;}
+    .content .button--rayen{overflow:hidden;padding:0;width:250px;}
+    .content .button--rayen.button--inverted{color:#fff;}
+    .content .button--rayen::before{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%;background:#7986cb;-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0);}
+    .content .button--rayen.button--inverted::before{background:#fff;color:#37474f;}
+    .content .button--rayen > span{display:block;}
+    .content .button--rayen::before,.content .button--rayen > span{padding:.5em 2em;transition:transform 0.3s;-webkit-transition-timing-function:cubic-bezier(0.75,0,0.125,1); transition-timing-function:cubic-bezier(0.75,0,0.125,1);}
+    .content .button--rayen:hover::before{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);}
+    .content .button--rayen:hover > span{-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0);}
+
+
+    .content_small .button{margin:1em;padding:0.5em 2em;border:none;background:none;color:inherit;vertical-align:middle;position:relative;z-index:1;-webkit-backface-visibility:hidden;-moz-osx-font-smoothing:grayscale;}
+    .content_small .button--border-thin{border:1px solid;}
+    .content_small .button--border-medium{border:2px solid; font-size: 20px; font-weight: 700;}
+    .content_small .button--border-thick{border:3px solid;}
+    .content_small .button--round-s.button--quidel::after{border-radius:3px;}
+    .content_small .button, .content_small .button:after, .content_small .button:before {-webkit-box-sizing: border-box;box-sizing: border-box;}
+    .content_small .button--rayen{overflow:hidden;padding:0;width:176px;}
+    .content_small .button--rayen.button--thin{width:80px; border-color: #ff7f50; color:#ff7f50;}
+    .content_small .button--rayen.button--inverted{color:#fff;}
+    .content_small .button--rayen::before{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%;background:#7986cb;-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0);}
+    .content_small .button--rayen.button--inverted::before{background:#fff;color:#37474f;}
+    .content_small .button--rayen > span{display:block;}
+    .content_small .button--rayen::before,.content_small .button--rayen > span{padding:.3em 0em;transition:transform 0.3s;-webkit-transition-timing-function:cubic-bezier(0.75,0,0.125,1); transition-timing-function:cubic-bezier(0.75,0,0.125,1);}
+    .content_small .button--rayen.button--thin::before,.content_small .button--rayen.button--thin > span{padding:.1em 0em;transition:transform 0.3s;-webkit-transition-timing-function:cubic-bezier(0.75,0,0.125,1); transition-timing-function:cubic-bezier(0.75,0,0.125,1);}
+    .content_small .button--rayen:hover::before{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);}
+    .content_small .button--rayen:hover > span{-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0);}
+    
+  </style>
+</head>
+<body>
+  <title>Naming Conventions</title>
+
+  <div class="content_small">
+    <title>Rename</title>
+    <input type="text" value=""><button class="button copy button--rayen button--border-medium button--thin" data-text="复制"><span>复制</span></button><button class="button remove button--rayen button--border-medium button--thin" data-text="删除"><span>删除</span></button>
+    <br>
+    <button class="button revert button--rayen button--border-medium button--text-thin button--size-l button--inverted" data-text="还原"><span>还原</span></button>
+    <button class="button encode button--rayen button--border-medium button--text-thin button--size-l button--inverted" data-text="切换(_)"><span>切换(_)</span></button>
+    <button class="encode-small-hump button button--rayen button--border-medium button--text-thin button--size-l button--inverted" data-text="小驼峰输出"><span>小驼峰输出</span></button>
+    <button class="encode-big-hump button button--rayen button--border-medium button--text-thin button--size-l button--inverted" data-text="大驼峰输出"><span>大驼峰输出</span></button>
+    <hr style="margin: 20px 13px;">
+  </div>
+  <div class="content">
+
+  </div>
+  <br>
+  <div class="pop">已复制</div>
+  <div class="top">TOP</div>
+  <a href="../../utils/index.html" class="index">
+    <svg t="1668584126659" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3987" width="50" height="50"><path d="M96 480c-9.6 0-19.2-3.2-25.6-12.8-12.8-12.8-9.6-35.2 3.2-44.8l377.6-310.4c35.2-25.6 86.4-25.6 118.4 0l377.6 307.2c12.8 9.6 16 32 3.2 44.8-12.8 12.8-32 16-44.8 3.2L531.2 166.4c-9.6-6.4-28.8-6.4-38.4 0L115.2 473.6c-6.4 6.4-12.8 6.4-19.2 6.4zM816 928H608c-19.2 0-32-12.8-32-32v-150.4c0-22.4-38.4-44.8-67.2-44.8-28.8 0-64 19.2-64 44.8V896c0 19.2-12.8 32-32 32H211.2C163.2 928 128 892.8 128 848V544c0-19.2 12.8-32 32-32s32 12.8 32 32v304c0 9.6 6.4 16 19.2 16H384v-118.4c0-64 67.2-108.8 128-108.8s131.2 44.8 131.2 108.8V864h176c9.6 0 16 0 16-19.2V544c0-19.2 12.8-32 32-32s32 12.8 32 32v304C896 896 864 928 816 928z" fill="#ffffff" p-id="3988"></path></svg>
+  </a>
+  <div class="setting">
+    <svg t="1668594008356" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6004" width="40" height="40"><path d="M990.08 111.36a32 32 0 0 0-32 32V960H140.16a32 32 0 0 0 0 64h849.92a32 32 0 0 0 32-32V143.36a32 32 0 0 0-32-32z" fill="#ffffff" p-id="6005"></path><path d="M393.6 841.6a32 32 0 0 0-32-32H64V64h745.6v300.8a32 32 0 0 0 64 0V32a32 32 0 0 0-32-32H32a32 32 0 0 0-32 32v809.6a32 32 0 0 0 32 32h329.6a32 32 0 0 0 32-32z" fill="#ffffff" p-id="6006"></path><path d="M625.28 841.6a32 32 0 0 0 32 32h184.32a32 32 0 0 0 32-32v-183.68a32 32 0 1 0-64 0v106.24L256 210.56h106.24a32 32 0 0 0 0-64H178.56a32 32 0 0 0-32 32v184.96a32 32 0 0 0 64 0V256l553.6 553.6h-106.88a32 32 0 0 0-32 32z" fill="#ffffff" p-id="6007"></path></svg>
+  </div>
+</body>
+<script src="http://s2.qhimg.com/!3b1458e3/jquery.min.js"></script>
+<script src="https://s1.ssl.qhres2.com/!4e2349c4/clipboard.min.js" type="text/javascript"></script>
+<script src="./config.js"></script>
+<script>
+
+$('.top').click(function(params) {$('html, body').stop().animate({scrollTop:0},200);return false;})
+function init(elem, callback){
+  var btn = '';
+  if(elem){
+      btn = elem.selector;
+  } else {
+      btn = '.copy';
+  }
+  if(window.clipboardData){
+      $('body').on('click', elem, function(){
+          var text = $(this).attr("data-clipboard-text");
+          window.clipboardData.setData('text',text);
+          $(this).bind("myClick",callback);
+          $(this).trigger("myClick");
+          $(this).unbind("myClick");
+      });
+  }else{
+      var client = new ClipboardJS(elem, {
+        target: function () {
+          return document.querySelector('input');
+        },
+      });
+      client.on('success', function(e) {
+          callback(e);
+          e.clearSelection();
+      });
+  }
+}
+
+init('.copy', function(e){
+  $('.pop').show();
+  $('.pop').stop().fadeOut(1500);
+})
+
+function createContentDom(obj) {
+  const {name , explain} = obj
+  return `<button class="button button--rayen button--border-medium button--text-thin button--size-l button--inverted copy" data-text="${name}" data-clipboard-text="${name}"><span>${name} ${explain}</span></button>`
+}
+function createContentSmallDom(obj) {
+  const {name , explain} = obj
+  return `<button class="select button button--rayen button--border-thin button--text-thin button--size-l button--inverted" data-text="${name}"><span>${name} ${explain}</span></button>`
+}
+let content_dom = ''
+let content_small_dom = ''
+
+function eachDom(params) {
+  $.each(params, function(index, value) {
+    if (Array.isArray(value)){
+      eachDom(value)
+    } else {
+      content_dom += createContentDom(value)
+      content_small_dom += createContentSmallDom(value)
+    }
+  })
+}
+eachDom(config);
+
+$('.content').html(content_dom);
+$('.content_small').append(content_small_dom);
+
+$('body').on('click', '.select', function(){
+   const thisText = $(this).data('text');
+   const inputValue = $('.content_small input').val();
+   let connect = ''
+   if (inputValue) {
+    connect = `${inputValue}-${thisText}`
+   }else {
+    connect = thisText
+   }
+   $('.content_small input').val(connect).data('encode', connect)
+
+});
+
+$('body').on('click', '.setting', function(){
+  $('.content').toggle();
+  $('.content_small').toggle();
+});
+
+$('body').on('click', '.remove', function(){
+  $('.content_small input').val('');
+});
+
+$('body').on('click', '.revert', function(){
+  const encode = $('.content_small input').data('encode')
+  $('.content_small input').val(encode)
+});
+
+$('body').on('click', '.encode', function(){
+  const encode = $('.content_small input').data('encode')
+  const str = encode.split('-').join('_')
+  $('.content_small input').val(str)
+});
+
+$('body').on('click', '.encode-small-hump', function(){
+  const reg = /\-(\w)/g
+  const encode = $('.content_small input').data('encode')
+  const str = encode.replace(reg, function (a, b) {
+    return b.toUpperCase()
+  })
+  $('.content_small input').val(str)
+});
+
+$('body').on('click', '.encode-big-hump', function(){
+  const reg = /\-(\w)/g
+  const encode = $('.content_small input').data('encode')
+  let str = encode.replace(reg, function (a, b) {
+    return b.toUpperCase()
+  })
+  str = str.slice(0,1).toUpperCase() + str.slice(1);
+  $('.content_small input').val(str)
+});
+
+</script>
+</html>

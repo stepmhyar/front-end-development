@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>txt格式整理</title>
+		<style type="text/css">
+			html,
+			body,
+			form,
+			fieldset,
+			textarea {
+				margin: 0;
+				padding: 0;
+				border: 0;
+				font-size: 10pt;
+				background: #eee;
+			}
+			form {
+				margin: 0 1%;
+				overflow: hidden;
+			}
+			legend {
+				line-height: 3em;
+				font-weight: bolder;
+			}
+			button,
+			input {
+				float: left;
+				margin: 1% 1% 0 0;
+				cursor: pointer;
+			}
+			textarea {
+				width: 100%;
+				height: 20em;
+				border: 1px solid #ccc;
+				display: block;
+				background: #fff;
+			}
+			input {
+				height: 19px;
+				width: 17px;
+				margin-left: -17px;
+			}
+			#regcheck {
+				width: 25px;
+				height: 25px;
+			}
+			#exphtml,
+			#expchange {
+				width: 70px;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<form action="" onsubmit="return false">
+			<fieldset>
+				<legend>txt格式整理</legend>
+				<textarea name="" rows="" cols="" id="codeText">
+          <ul>
+            <li><code class="language-text">%s</code> 会格式化变量为字符串</li>
+            <li><code class="language-text">%d</code> 会格式化变量为数字</li>
+            <li><code class="language-text">%i</code> 会格式化变量为其整数部分</li>
+            <li><code class="language-text">%o</code> 会格式化变量为对象</li>
+          </ul>
+        </textarea>
+
+				<button type="button" onclick="$('codeText').value=code.A();">压缩txt</button>
+
+				<button type="button" onclick="$('codeText').value=code.B();">格式(正则匹配)</button>
+				<input type="text" id="exphtml" value="\<.+?\>" title="匹配正则" />
+				<input type="text" id="expchange" value="" title="替换内容" />
+
+				<button type="button" onclick="$('codeText').value=code.C();">格式(字数换行)</button>
+				<input type="text" id="exp" value="10" title="换行字节数 默认10" />
+
+				<button type="button" onclick="$('codeText').value=code.D();">格式(字符换行)</button>
+				<input type="text" id="exps" title="匹配正则" />
+				<input type="checkbox" id="regcheck" title="指定是否在指定字符后添加换行符" />
+
+				<button type="button" onclick="$('codeText').value=code.Z();">还原txt</button>
+			</fieldset>
+		</form>
+
+		<script type="text/javascript">
+			function $(id) {
+				return document.getElementById(id);
+			}
+			function codeZip(obj) {
+				this.S = function() {
+					var code = obj.value;
+					if (!this.codeZ || this.codeZ == '') {
+						this.codeZ = code;
+					}
+					code = code.replace(/(\n|\t|\s)*/gi, '');
+					code = code.replace(/\n|\t|\s(\{|\}|\,|\:|\;)/gi, '');
+					code = code.replace(/(\{|\}|\,|\:|\;)\s/gi, '');
+					return code;
+				};
+				this.A = function() {
+					var code = this.S();
+					return code;
+				};
+				this.B = function() {
+					var code = this.S();
+					var regb = new RegExp($('exphtml').value, 'g');
+					code = code.replace(regb, $('expchange').value);
+					return code;
+				};
+				this.C = function() {
+					var code = this.S();
+					var regb = $('exp').value || 10;
+					var reg = new RegExp('.{' + regb + '}', 'g');
+					code = code.replace(reg, '$&\r\n');
+					return code;
+				};
+				this.D = function() {
+					var code = this.S();
+					var regb = $('exps').value;
+					if (!regb) return '无指定字符';
+					var reg = new RegExp(regb, 'gm');
+					var regcheck = $('regcheck').checked;
+					var regenter = regcheck ? regb + '\n' : '\n' + regb;
+					code = code.replace(reg, regenter);
+					return code;
+				};
+				this.Z = function() {
+					return this.codeZ ? this.codeZ : obj.value;
+				};
+				var my = this;
+				obj.onkeydown = function() {
+					my.codeZ = '';
+				};
+			}
+			var code = new codeZip($('codeText'));
+		</script>
+	</body>
+</html>

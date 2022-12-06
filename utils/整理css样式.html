@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>整理css样式</title>
+		<style type="text/css">
+			html,
+			body,
+			form,
+			fieldset,
+			textarea {
+				margin: 0;
+				padding: 0;
+				border: 0;
+				font-size: 10pt;
+				background: #eee;
+			}
+			form {
+				margin: 0 1%;
+				overflow: hidden;
+			}
+			legend {
+				line-height: 3em;
+				font-weight: bolder;
+			}
+			button {
+				float: left;
+				margin: 1% 1% 0 0;
+				cursor: pointer;
+			}
+			textarea {
+				width: 100%;
+				height: 20em;
+				border: 1px solid #ccc;
+				display: block;
+				background: #fff;
+			}
+		</style>
+	</head>
+
+	<body>
+		<form action="" onsubmit="return false">
+			<fieldset>
+				<legend>样式表(CSS) 压缩与格式整理</legend>
+				<textarea name="" rows="" cols="" id="codeText">
+        
+          body * { font-size:10pt; }
+          /* ss sda */ 
+          p 
+          { clear:left; padding:5px 10px; 
+          } 
+          td 
+          , 
+          fieldset ¸
+          { padding : 10px ; } 
+          textarea { 
+          width:90%; 
+          height:10em; 
+          } 
+        </textarea>
+				<button type="button" onclick="$('codeText').value=code.A();">压缩代码</button>
+				<button type="button" onclick="$('codeText').value=code.B();">格式(多行)</button>
+				<button type="button" onclick="$('codeText').value=code.C();">格式(单行)</button>
+				<button type="button" onclick="$('codeText').value=code.Z();">还原代码</button>
+			</fieldset>
+		</form>
+
+		<script type="text/javascript">
+			function $(id) {
+				return document.getElementById(id);
+			}
+			function codeZip(obj) {
+				this.S = function() {
+					var code = obj.value;
+					if (!this.codeZ || this.codeZ == '') {
+						this.codeZ = code;
+					}
+					code = code.replace(/(\n|\t|\s)*/gi, '$1');
+					code = code.replace(/\n|\t|\s(\{|\}|\,|\:|\;)/gi, '$1');
+					code = code.replace(/(\{|\}|\,|\:|\;)\s/gi, '$1');
+					return code;
+				};
+				this.A = function() {
+					var code = this.S();
+					return code;
+				};
+				this.B = function() {
+					var code = this.S();
+					code = code.replace(/(\{)/gi, ' $1');
+					code = code.replace(/(\{|\;)/gi, '$1\n\t');
+					code = code.replace(/\t*(\})/gi, '$1\n');
+					code = code.replace(/(\*\/)/gi, '$1\n');
+					return code;
+				};
+				this.C = function() {
+					var code = this.S();
+					code = code.replace(/(\})/gi, '$1\n');
+					code = code.replace(/(\*\/)/gi, '$1\n');
+					return code;
+				};
+				this.Z = function() {
+					return this.codeZ ? this.codeZ : obj.value;
+				};
+				var my = this;
+				obj.onkeydown = function() {
+					my.codeZ = '';
+				};
+			}
+			var code = new codeZip($('codeText'));
+		</script>
+	</body>
+</html>

@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>代码规范（前端篇）</title>
+	</head>
+	<body>
+		<div id="main" style="width: 1200px; background: #fff; margin: 0 auto; padding: 30px;">
+			<div class="post">
+				<h1 class="postTitle">
+					<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="javascript:;"> <span role="heading" aria-level="2">2021最新阿里代码规范（前端篇）</span> </a>
+				</h1>
+				<div class="clear"></div>
+				<div class="postBody">
+					<div id="cnblogs_post_body" class="blogpost-body blogpost-body-html">
+						<svg xmlns="http://www.w3.org/2000/svg" style="display: none"><path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"></path></svg>
+						<article class="baidu_pl">
+							<div id="article_content" class="article_content clearfix">
+								<div id="content_views" class="markdown_views prism-atom-one-dark">
+									<p>此规范根据阿里最新前端规范整理，如有雷同，纯属巧合。<br /></p>
+									<div class="toc">
+										<h3>目录</h3>
+										<ul>
+											<li>
+												<ul>
+													<li><a href="#_2" target="_self" rel="noopener">前端代码规范</a></li>
+													<li><a href="#_9" target="_self" rel="noopener">一．编程规约</a></li>
+													<li>
+														<ul>
+															<li><a href="#__10" target="_self" rel="noopener">(一) 命名规范</a></li>
+															<li>
+																<ul>
+																	<li><a href="#111__11" target="_self" rel="noopener">1.1.1 项目命名</a></li>
+																	<li><a href="#112__17" target="_self" rel="noopener">1.1.2 目录命名</a></li>
+																	<li><a href="#113_JSCSSSCSSHTMLPNG__34" target="_self" rel="noopener">1.1.3 JS、CSS、SCSS、HTML、PNG 文件命名</a></li>
+																	<li><a href="#114__39" target="_self" rel="noopener">1.1.4 命名严谨性</a></li>
+																</ul>
+															</li>
+															<li><a href="#_HTML__Vue_Template__49" target="_self" rel="noopener">(二) HTML 规范 （Vue Template 同样适用）</a></li>
+															<li>
+																<ul>
+																	<li><a href="#121_HTML__51" target="_self" rel="noopener">1.2.1 HTML 类型</a></li>
+																	<li><a href="#122__78" target="_self" rel="noopener">1.2.2 缩进</a></li>
+																	<li><a href="#123__83" target="_self" rel="noopener">1.2.3 分块注释</a></li>
+																	<li><a href="#124__86" target="_self" rel="noopener">1.2.4 语义化标签</a></li>
+																	<li><a href="#125__101" target="_self" rel="noopener">1.2.5 引号</a></li>
+																</ul>
+															</li>
+															<li><a href="#_CSS__107" target="_self" rel="noopener">(三) CSS 规范</a></li>
+															<li>
+																<ul>
+																	<li><a href="#131__108" target="_self" rel="noopener">1.3.1 命名</a></li>
+																	<li><a href="#132__135" target="_self" rel="noopener">1.3.2 选择器</a></li>
+																	<li>
+																		<ul>
+																			<li><a href="#1_css__136" target="_self" rel="noopener">1) css 选择器中避免使用标签名</a></li>
+																			<li><a href="#2__140" target="_self" rel="noopener">2) 使用直接子选择器</a></li>
+																		</ul>
+																	</li>
+																	<li><a href="#133__161" target="_self" rel="noopener">1.3.3 尽量使用缩写属性</a></li>
+																	<li><a href="#134__179" target="_self" rel="noopener">1.3.4 每个选择器及属性独占一行</a></li>
+																	<li><a href="#135__0__197" target="_self" rel="noopener">1.3.5 省略 0 后面的单位</a></li>
+																	<li><a href="#136__ID__212" target="_self" rel="noopener">1.3.6 避免使用 ID 选择器及全局标签选择器防止污染全局样式</a></li>
+																</ul>
+															</li>
+															<li><a href="#_LESS__229" target="_self" rel="noopener">(四) LESS 规范</a></li>
+															<li>
+																<ul>
+																	<li><a href="#141__230" target="_self" rel="noopener">1.4.1 代码组织</a></li>
+																	<li>
+																		<ul>
+																			<li><a href="#1__less__stylelesscommon__231" target="_self" rel="noopener">1) 将公共 less 文件放置在 style/less/common 文件夹</a></li>
+																			<li><a href="#2__233" target="_self" rel="noopener">2) 按以下顺序组织</a></li>
+																		</ul>
+																	</li>
+																	<li><a href="#142__246" target="_self" rel="noopener">1.4.2 避免嵌套层级过多</a></li>
+																</ul>
+															</li>
+															<li><a href="#_Javascript__267" target="_self" rel="noopener">(五) Javascript 规范</a></li>
+															<li>
+																<ul>
+																	<li><a href="#151__268" target="_self" rel="noopener">1.5.1 命名</a></li>
+																	<li>
+																		<ul>
+																			<li><a href="#1__lowerCamelCase__269" target="_self" rel="noopener">1) 采用小写驼峰命名 lowerCamelCase，代码中的命名均不能以下划线， 也不能以下划线或美元符号结束</a></li>
+																			<li><a href="#2__lowerCamelCase___271" target="_self" rel="noopener">2) 方法名、参数名、成员变量、局部变量都统一使用 lowerCamelCase 风 格，必须遵从驼峰形式</a></li>
+																			<li><a href="#3___335" target="_self" rel="noopener">3) 常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚， 不要嫌名字长</a></li>
+																		</ul>
+																	</li>
+																	<li><a href="#152__338" target="_self" rel="noopener">1.5.2 代码格式</a></li>
+																	<li>
+																		<ul>
+																			<li><a href="#1__2__339" target="_self" rel="noopener">1) 使用 2 个空格进行缩进</a></li>
+																			<li><a href="#2___348" target="_self" rel="noopener">2) 不同逻辑、不同语义、不同业务的代码之间插入一个空行分隔开来以 提升可读性</a></li>
+																		</ul>
+																	</li>
+																	<li><a href="#153__350" target="_self" rel="noopener">1.5.3 字符串</a></li>
+																	<li><a href="#154__362" target="_self" rel="noopener">1.5.4 对象声明</a></li>
+																	<li>
+																		<ul>
+																			<li><a href="#1__363" target="_self" rel="noopener">1) 使用字面值创建对象</a></li>
+																			<li><a href="#2__366" target="_self" rel="noopener">2) 使用字面量来代替对象构造器</a></li>
+																		</ul>
+																	</li>
+																	<li><a href="#155__ES6_376" target="_self" rel="noopener">1.5.5 使用 ES6+</a></li>
+																	<li><a href="#156__379" target="_self" rel="noopener">1.5.6 括号</a></li>
+																	<li><a href="#157_undefined__395" target="_self" rel="noopener">1.5.7 undefined 判断</a></li>
+																	<li><a href="#158__405" target="_self" rel="noopener">1.5.8 条件判断和循环最多三层</a></li>
+																	<li><a href="#159_this__409" target="_self" rel="noopener">1.5.9 this 的转换命名</a></li>
+																	<li><a href="#1510__consolelog_413" target="_self" rel="noopener">1.5.10 慎用 console.log</a></li>
+																</ul>
+															</li>
+														</ul>
+													</li>
+													<li><a href="#Vue__416" target="_self" rel="noopener">二、Vue 项目规范</a></li>
+													<li>
+														<ul>
+															<li><a href="#_Vue__417" target="_self" rel="noopener">(一) Vue 编码基础</a></li>
+															<li>
+																<ul>
+																	<li><a href="#211__422" target="_self" rel="noopener">2.1.1. 组件规范</a></li>
+																	<li>
+																		<ul>
+																			<li><a href="#1__423" target="_self" rel="noopener">1) 组件名为多个单词。</a></li>
+																			<li><a href="#2__pascalcase__447" target="_self" rel="noopener">2) 组件文件名为 pascal-case 格式</a></li>
+																			<li><a href="#3__base__462" target="_self" rel="noopener">3) 基础组件文件名为 base 开头，使用完整单词而不是缩写。</a></li>
+																			<li><a href="#4__480" target="_self" rel="noopener">4) 和父组件紧密耦合的子组件应该以父组件名作为前缀命名</a></li>
+																			<li><a href="#5__Template__PascalCase__500" target="_self" rel="noopener">5) 在 Template 模版中使用组件，应使用 PascalCase 模式，并且使用自闭合组件。</a></li>
+																			<li><a href="#6__data__515" target="_self" rel="noopener">6) 组件的 data 必须是一个函数</a></li>
+																			<li><a href="#7_Prop__540" target="_self" rel="noopener">7) Prop 定义应该尽量详细</a></li>
+																			<li><a href="#8__571" target="_self" rel="noopener">8) 为组件样式设置作用域</a></li>
+																			<li><a href="#9__601" target="_self" rel="noopener">9) 如果特性元素较多，应该主动换行。</a></li>
+																		</ul>
+																	</li>
+																	<li><a href="#212__616" target="_self" rel="noopener">2.1.2. 模板中使用简单的表达式</a></li>
+																	<li><a href="#213__648" target="_self" rel="noopener">2.1.3 指令都使用缩写形式</a></li>
+																	<li><a href="#214__668" target="_self" rel="noopener">2.1.4 标签顺序保持一致</a></li>
+																	<li><a href="#215__vfor__key_687" target="_self" rel="noopener">2.1.5 必须为 v-for 设置键值 key</a></li>
+																	<li><a href="#216_vshow__vif__688" target="_self" rel="noopener">2.1.6 v-show 与 v-if 选择</a></li>
+																	<li><a href="#217_script__691" target="_self" rel="noopener">2.1.7 script 标签内部结构顺序</a></li>
+																	<li><a href="#218_Vue_Router__694" target="_self" rel="noopener">2.1.8 Vue Router 规范</a></li>
+																	<li>
+																		<ul>
+																			<li><a href="#1__695" target="_self" rel="noopener">1) 页面跳转数据传递使用路由参数</a></li>
+																			<li><a href="#2__705" target="_self" rel="noopener">2) 使用路由懒加载（延迟加载）机制</a></li>
+																			<li><a href="#3_router__718" target="_self" rel="noopener">3) router 中的命名规范</a></li>
+																			<li><a href="#4_router__path__763" target="_self" rel="noopener">4) router 中的 path 命名规范</a></li>
+																		</ul>
+																	</li>
+																</ul>
+															</li>
+															<li><a href="#_Vue__798" target="_self" rel="noopener">(二) Vue 项目目录规范</a></li>
+															<li>
+																<ul>
+																	<li><a href="#221__799" target="_self" rel="noopener">2.2.1 基础</a></li>
+																	<li><a href="#222__Vuecli__804" target="_self" rel="noopener">2.2.2 使用 Vue-cli 脚手架</a></li>
+																	<li><a href="#223__807" target="_self" rel="noopener">2.2.3 目录说明</a></li>
+																	<li>
+																		<ul>
+																			<li><a href="#1_api__836" target="_self" rel="noopener">1) api 目录</a></li>
+																			<li><a href="#2_assets__870" target="_self" rel="noopener">2) assets 目录</a></li>
+																		</ul>
+																	</li>
+																	<li><a href="#3_components__883" target="_self" rel="noopener">3) components 目录</a></li>
+																	<li>
+																		<ul>
+																			<li><a href="#4_constants__897" target="_self" rel="noopener">4) constants 目录</a></li>
+																		</ul>
+																	</li>
+																	<li><a href="#5_router__store__951" target="_self" rel="noopener">5) router 与 store 目录</a></li>
+																	<li>
+																		<ul>
+																			<li><a href="#6_views__958" target="_self" rel="noopener">6) views 目录</a></li>
+																		</ul>
+																	</li>
+																	<li><a href="#224__976" target="_self" rel="noopener">2.2.4 注释说明</a></li>
+																	<li><a href="#225__985" target="_self" rel="noopener">2.2.5 其他</a></li>
+																	<li>
+																		<ul>
+																			<li><a href="#1__DOM_986" target="_self" rel="noopener">1) 尽量不要手动操作 DOM</a></li>
+																			<li><a href="#2__989" target="_self" rel="noopener">2) 删除无用代码</a></li>
+																		</ul>
+																	</li>
+																</ul>
+															</li>
+														</ul>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+									<p></p>
+									<h2><a id="_2" rel="noopener"></a>前端代码规范</h2>
+									<blockquote>
+										<p>规范的目的是为了编写高质量的代码，让你的团队成员每天得心情都是愉悦的，大家在一起是快 乐的。</p>
+										<p>
+											引自《阿里规约》的开头片段：<br />
+											----现代软件架构的复杂性需要协同开发完成，如何高效地协同呢？无规矩不成方圆，无规范难 以协同，比如，制订交通法规表面上是要限制行车权，实际上是保障公众的人身安全，试想如果<br />
+											没有限速，没有红绿灯，谁还敢上路行驶。对软件来说，适当的规范和标准绝不是消灭代码内容的创造性、优雅性，而是限制过度个性化，以一种普遍认可的统一方式一起做事，提升协作效率，降低沟通成本。代码的字里行间流淌的是软件系统的血液，质量的提升是尽可能少踩坑，杜绝踩 重复的坑，切实提升系统稳定性，码出质量。
+										</p>
+									</blockquote>
+									<h2><a id="_9" rel="noopener"></a>一．编程规约</h2>
+									<h3><a id="__10" rel="noopener"></a>(一) 命名规范</h3>
+									<h4><a id="111__11" rel="noopener"></a>1.1.1 项目命名</h4>
+									<p>全部采用小写方式，以中线分隔。</p>
+									<p>
+										正例：<code>mall-management-system</code><br />
+										反例：<code>mall_management-system / mallManagementSystem</code>
+									</p>
+									<h4><a id="112__17" rel="noopener"></a>1.1.2 目录命名</h4>
+									<p>全部采用小写方式， 以中划线分隔，有复数结构时，要采用复数命名法， 缩写不用复数。</p>
+									<p><strong>正例：</strong> <code>scripts/styles/components/images/utils/layouts/demo-styles/demo-scripts/img/doc</code></p>
+									<p><strong>反例：</strong> <code>script/style/demo_scripts/demoStyles/imgs/docs</code></p>
+									<p>【特殊】VUE 的项目中的 <code>components</code> 中的组件目录，使用 <code>kebab-case</code>命名。</p>
+									<p>
+										<strong>正例：</strong> <code>head-search/page-loading/authorized/notice-icon</code><br />
+										<strong>反例：</strong><code>HeadSearch/PageLoading</code>
+									</p>
+									<p>【特殊】VUE 的项目中的除 <code>components</code> 组件目录外的所有目录也使用 <code>kebab-case</code>命名。</p>
+									<p>
+										<strong>正例：</strong> <code>page-one/shopping-car/user-management</code><br />
+										<strong>反例：</strong> <code>ShoppingCar/UserManagement</code>
+									</p>
+									<h4><a id="113_JSCSSSCSSHTMLPNG__34" rel="noopener"></a>1.1.3 JS、CSS、SCSS、HTML、PNG 文件命名</h4>
+									<p>全部采用小写方式， 以中划线分隔。</p>
+									<p>
+										<strong>正例：</strong> <code>render-dom.js/signup.css/index.html/company-logo.png</code><br />
+										<strong>反例：</strong> <code>renderDom.js/UserManagement.html</code>
+									</p>
+									<h4><a id="114__39" rel="noopener"></a>1.1.4 命名严谨性</h4>
+									<p>代码中的命名严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式。 说明：正确的 英文拼写和语法可以让阅读者易于理解，避免歧义。注意，即使纯拼音命名方式也要避免采用</p>
+									<p>
+										<strong>正例：</strong><code>henan/luoyang/rmb 等国际通用的名称，可视同英文</code><br />
+										<strong>反例：</strong> <code>DaZhePromotion [打折] / getPingfenByName() [评分] / int 某变量 = 3</code>
+									</p>
+									<p>杜绝完全不规范的缩写，避免望文不知义：</p>
+									<p><strong>反例：</strong> <code>AbstractClass</code>“缩写”命名成 <code>AbsClass</code>；<code>condition</code> “缩写”命名成 <code>condi</code>，此类随意缩写严重 降低了代码的可阅读性。</p>
+									<h3><a id="_HTML__Vue_Template__49" rel="noopener"></a>(二) HTML 规范 （Vue Template 同样适用）</h3>
+									<h4><a id="121_HTML__51" rel="noopener"></a>1.2.1 HTML 类型</h4>
+									<p>推荐使用 HTML5 的文档类型申明：</p>
+									<p>（建议使用 text/html 格式的 HTML。避免使用 XHTML。XHTML 以及它的属性，比如 application/xhtml+xml 在浏览器中的应用支持与优化空间都十分有限）。</p>
+									<p>
+										 规定字符编码<br />
+										 IE 兼容模式<br />
+										 规定字符编码<br />
+										 doctype 大写
+									</p>
+									<p><strong>正例：</strong></p>
+									<pre class="prettyprint"><code class="prism language-html has-numbering"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>X-UA-Compatible<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>IE=Edge<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Page title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>images/company-logo.png<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Company<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+								</div>
+							</div>
+						</article>
+						<h4><a id="122__78" rel="noopener"></a>1.2.2 缩进</h4>
+						<p>
+							缩进使用 2 个空格（一个 tab）；<br />
+							嵌套的节点应该缩进。
+						</p>
+						<h4><a id="123__83" rel="noopener"></a>1.2.3 分块注释</h4>
+						<p>在每一个块状元素，列表元素和表格元素后，加上一对 HTML 注释。</p>
+						<h4><a id="124__86" rel="noopener"></a>1.2.4 语义化标签</h4>
+						<p>HTML5 中新增很多语义化标签，所以优先使用语义化标签，避免一个页面都是 div 或者 p 标 签。</p>
+						<p><strong>正例</strong></p>
+						<pre class="prettyprint"><code class="prism language-html has-numbering"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">&gt;</span></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>footer</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>footer</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+						<p><strong>反例</strong></p>
+						<pre class="prettyprint"><code class="prism language-html has-numbering"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+						<h4><a id="125__101" rel="noopener"></a>1.2.5 引号</h4>
+						<p>使用双引号(" ") 而不是单引号(’ ') 。</p>
+						<p>
+							<strong>正例：</strong> <code>&lt;div class=”box”&gt;&lt;/div&gt;</code><br />
+							<strong>反例：</strong><code>&lt;div class=’box’&gt;&lt;/div&gt;</code>
+						</p>
+						<h3><a id="_CSS__107" rel="noopener"></a>(三) CSS 规范</h3>
+						<h4><a id="131__108" rel="noopener"></a>1.3.1 命名</h4>
+						<p>
+							 类名使用小写字母，以中划线分隔<br />
+							 id 采用驼峰式命名<br />
+							 scss 中的变量、函数、混合、placeholder 采用驼峰式命名
+						</p>
+						<blockquote><p>ID 和 class 的名称总是使用可以反应元素目的和用途的名称，或其他通用的名称，代替表象和 晦涩难懂的名称。</p></blockquote>
+						<p><strong>不推荐：</strong></p>
+						<pre class="prettyprint"><code class="prism language-css has-numbering"><span class="token selector">.fw-800</span> <span class="token punctuation">{</span>
+<span class="token property">font-weight</span><span class="token punctuation">:</span> 800<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.red</span> <span class="token punctuation">{</span>
+<span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+</code></pre>
+						<p><strong>推荐:</strong></p>
+						<pre class="prettyprint"><code class="prism language-css has-numbering"><span class="token selector">.heavy</span> <span class="token punctuation">{</span>
+<span class="token property">font-weight</span><span class="token punctuation">:</span> 800<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.important</span> <span class="token punctuation">{</span> 
+<span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+</code></pre>
+						<h4><a id="132__135" rel="noopener"></a>1.3.2 选择器</h4>
+						<h5><a id="1_css__136" rel="noopener"></a>1) css 选择器中避免使用标签名</h5>
+						<blockquote><p>从结构、表现、行为分离的原则来看，应该尽量避免 css 中出现 HTML 标签，并且在 css 选择 器中出现标签名会存在潜在的问题。</p></blockquote>
+						<h5><a id="2__140" rel="noopener"></a>2) 使用直接子选择器</h5>
+						<blockquote>
+							<p>
+								很多前端开发人员写选择器链的时候不使用 直接子选择器（注：直接子选择器和后代选择器的<br />
+								区别）。有时，这可能会导致疼痛的设计问题并且有时候可能会很耗性能。然而，在任何情况下，<br />
+								这是一个非常不好的做法。如果你不写很通用的，需要匹配到 DOM 末端的选择器， 你应该总 是考虑直接子选择器。
+							</p>
+						</blockquote>
+						<p><strong>不推荐:</strong></p>
+						<pre class="prettyprint"><code class="prism language-css has-numbering"><span class="token selector">.content .title</span> <span class="token punctuation">{</span>
+<span class="token property">font-size</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+						<p><strong>推荐:</strong></p>
+						<pre class="prettyprint"><code class="prism language-css has-numbering"><span class="token selector">.content &gt; .title</span> <span class="token punctuation">{</span>
+<span class="token property">font-size</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+						<h4><a id="133__161" rel="noopener"></a>1.3.3 尽量使用缩写属性</h4>
+						<p><strong>不推荐：</strong></p>
+						<pre class="prettyprint"><code class="prism language-css has-numbering"><span class="token property">border-top-style</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span> 
+<span class="token property">font-family</span><span class="token punctuation">:</span> palatino<span class="token punctuation">,</span> georgia<span class="token punctuation">,</span> serif<span class="token punctuation">;</span> 
+<span class="token property">font-size</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span> <span class="token property">line-height</span><span class="token punctuation">:</span> 1.6<span class="token punctuation">;</span> 
+<span class="token property">padding-bottom</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span> 
+<span class="token property">padding-left</span><span class="token punctuation">:</span> 1em<span class="token punctuation">;</span>
+<span class="token property">padding-right</span><span class="token punctuation">:</span> 1em<span class="token punctuation">;</span> 
+<span class="token property">padding-top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+</code></pre>
+						<p><strong>推荐：</strong></p>
+						<pre class="prettyprint"><code class="prism language-css has-numbering"><span class="token property">border-top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> 
+<span class="token property">font</span><span class="token punctuation">:</span> 100%/1.6 palatino<span class="token punctuation">,</span> georgia<span class="token punctuation">,</span> serif<span class="token punctuation">;</span> 
+<span class="token property">padding</span><span class="token punctuation">:</span> 0 1em 2em<span class="token punctuation">;</span>
+</code></pre>
+						<h4><a id="134__179" rel="noopener"></a>1.3.4 每个选择器及属性独占一行</h4>
+						<p><strong>不推荐：</strong></p>
+						<pre class="prettyprint"><code class="prism language-css has-numbering"><span class="token selector">button</span> <span class="token punctuation">{</span> 
+<span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span> 
+<span class="token property">height</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+<span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+<span class="token property">background</span><span class="token punctuation">:</span> #00a0e9<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+						<p><strong>推荐：</strong></p>
+						<pre class="prettyprint"><code class="prism language-css has-numbering"><span class="token selector">button</span> <span class="token punctuation">{</span>
+<span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span> <span class="token property">height</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+<span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+<span class="token property">background</span><span class="token punctuation">:</span> #00a0e9<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+</code></pre>
+						<h4><a id="135__0__197" rel="noopener"></a>1.3.5 省略 0 后面的单位</h4>
+						<p><strong>不推荐：</strong></p>
+						<pre class="prettyprint"><code class="prism language-css has-numbering"> <span class="token selector">div</span> <span class="token punctuation">{</span>
+<span class="token property">padding-bottom</span><span class="token punctuation">:</span> 0px<span class="token punctuation">;</span> 
+<span class="token property">margin</span><span class="token punctuation">:</span> 0em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+						<p><strong>推荐：</strong></p>
+						<pre class="prettyprint"><code class="prism language-css has-numbering"><span class="token selector">div</span> <span class="token punctuation">{</span>
+<span class="token property">padding-bottom</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> 
+<span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+</code></pre>
+						<h4><a id="136__ID__212" rel="noopener"></a>1.3.6 避免使用 ID 选择器及全局标签选择器防止污染全局样式</h4>
+						<p><strong>不推荐：</strong></p>
+						<pre class="prettyprint"><code class="prism language-css has-numbering"><span class="token selector">#header</span> <span class="token punctuation">{</span>
+<span class="token property">padding-bottom</span><span class="token punctuation">:</span> 0px<span class="token punctuation">;</span> 
+<span class="token property">margin</span><span class="token punctuation">:</span> 0em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+						<p><strong>推荐：</strong></p>
+						<pre class="prettyprint"><code class="prism language-css has-numbering"><span class="token selector">.header</span> <span class="token punctuation">{</span> 
+<span class="token property">padding-bottom</span><span class="token punctuation">:</span> 0px<span class="token punctuation">;</span> 
+<span class="token property">margin</span><span class="token punctuation">:</span> 0em<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+</code></pre>
+						<h3><a id="_LESS__229" rel="noopener"></a>(四) LESS 规范</h3>
+						<h4><a id="141__230" rel="noopener"></a>1.4.1 代码组织</h4>
+						<h5><a id="1__less__stylelesscommon__231" rel="noopener"></a>1) 将公共 less 文件放置在 style/less/common 文件夹</h5>
+						<p>例: // color.less,common.less</p>
+						<h5><a id="2__233" rel="noopener"></a>2) 按以下顺序组织</h5>
+						<p>
+							1、@import;<br />
+							2、变量声明;<br />
+							3、样式声明;
+						</p>
+						<pre class="prettyprint"><code class="prism language-css has-numbering"><span class="token atrule"><span class="token rule">@import</span> <span class="token string">"mixins/size.less"</span><span class="token punctuation">;</span></span> 
+<span class="token atrule"><span class="token rule">@default-text-color</span><span class="token punctuation">:</span> #333<span class="token punctuation">;</span></span> 
+<span class="token selector">.page</span> <span class="token punctuation">{</span>
+<span class="token property">width</span><span class="token punctuation">:</span> 960px<span class="token punctuation">;</span> 
+<span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+</code></pre>
+						<h4><a id="142__246" rel="noopener"></a>1.4.2 避免嵌套层级过多</h4>
+						<blockquote><p>将嵌套深度限制在 3 级。对于超过 4 级的嵌套，给予重新评估。这可以避免出现过于详实的 CSS 选择器。避免大量的嵌套规则。当可读性受到影响时，将之打断。推荐避免出现多于 20 行的嵌 套规则出现。</p></blockquote>
+						<p><strong>不推荐：</strong></p>
+						<pre class="prettyprint"><code class="prism language-css has-numbering"> <span class="token selector">.main</span> <span class="token punctuation">{</span>
+<span class="token selector">.title</span> <span class="token punctuation">{</span> 
+<span class="token selector">.name</span> <span class="token punctuation">{</span> 
+    <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>  
+  <span class="token punctuation">}</span> 
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token selector">```
+**推荐：**
+```css
+.main-title</span> <span class="token punctuation">{</span>
+<span class="token selector">.name</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+						<h3><a id="_Javascript__267" rel="noopener"></a>(五) Javascript 规范</h3>
+						<h4><a id="151__268" rel="noopener"></a>1.5.1 命名</h4>
+						<h5><a id="1__lowerCamelCase__269" rel="noopener"></a>1) 采用小写驼峰命名 lowerCamelCase，代码中的命名均不能以下划线， 也不能以下划线或美元符号结束</h5>
+						<p><strong>反例：</strong> <em>name / name</em> / name$</p>
+						<h5><a id="2__lowerCamelCase___271" rel="noopener"></a>2) 方法名、参数名、成员变量、局部变量都统一使用 lowerCamelCase 风 格，必须遵从驼峰形式</h5>
+						<p><strong>正例：</strong> localValue / getHttpMessage() / inputUserId</p>
+						<p><strong>其中 method 方法命名必须是 动词 或者 动词+名词 形式</strong></p>
+						<p>
+							<strong>正例：</strong> saveShopCarData /openShopCarInfoDialog<br />
+							<strong>反例：</strong> save / open / show / go
+						</p>
+						<p><strong>特此说明，增删查改，详情统一使用如下 5 个单词，不得使用其他（目的是为了统一各个端）</strong></p>
+						<pre class="prettyprint"><code class="has-numbering">add / update / delete / detail / get 
+附： 函数方法常用的动词: 
+get 获取/set 设置, 
+add 增加/remove 删除, 
+create 创建/destory 销毁, 
+start 启动/stop 停止, 
+open 打开/close 关闭, 
+read 读取/write 写入, 
+load 载入/save 保存,
+begin 开始/end 结束, 
+backup 备份/restore 恢复,
+import 导入/export 导出, 
+split 分割/merge 合并,
+inject 注入/extract 提取,
+attach 附着/detach 脱离, 
+bind 绑定/separate 分离, 
+view 查看/browse 浏览, 
+edit 编辑/modify 修改,
+select 选取/mark 标记, 
+copy 复制/paste 粘贴,
+undo 撤销/redo 重做, 
+insert 插入/delete 移除,
+add 加入/append 添加, 
+clean 清理/clear 清除,
+index 索引/sort 排序,
+find 查找/search 搜索, 
+increase 增加/decrease 减少, 
+play 播放/pause 暂停, 
+launch 启动/run 运行, 
+compile 编译/execute 执行, 
+debug 调试/trace 跟踪, 
+observe 观察/listen 监听,
+build 构建/publish 发布,
+input 输入/output 输出,
+encode 编码/decode 解码, 
+encrypt 加密/decrypt 解密, 
+compress 压缩/decompress 解压缩, 
+pack 打包/unpack 解包,
+parse 解析/emit 生成,
+connect 连接/disconnect 断开,
+send 发送/receive 接收, 
+download 下载/upload 上传, 
+refresh 刷新/synchronize 同步,
+update 更新/revert 复原, 
+lock 锁定/unlock 解锁, 
+check out 签出/check in 签入, 
+submit 提交/commit 交付, 
+push 推/pull 拉,
+expand 展开/collapse 折叠, 
+enter 进入/exit 退出,
+abort 放弃/quit 离开, 
+obsolete 废弃/depreciate 废旧, 
+collect 收集/aggregate 聚集
+</code></pre>
+						<h5><a id="3___335" rel="noopener"></a>3) 常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚， 不要嫌名字长</h5>
+						<p>
+							<strong>正例：</strong> MAX_STOCK_COUNT<br />
+							<strong>反例：</strong> MAX_COUNT
+						</p>
+						<h4><a id="152__338" rel="noopener"></a>1.5.2 代码格式</h4>
+						<h5><a id="1__2__339" rel="noopener"></a>1) 使用 2 个空格进行缩进</h5>
+						<p><strong>正例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-js has-numbering"><span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">&lt;</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+x <span class="token operator">+=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+x <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+</code></pre>
+						<h5><a id="2___348" rel="noopener"></a>2) 不同逻辑、不同语义、不同业务的代码之间插入一个空行分隔开来以 提升可读性</h5>
+						<p>说明：任何情形，没有必要插入多个空行进行隔开。</p>
+						<h4><a id="153__350" rel="noopener"></a>1.5.3 字符串</h4>
+						<p>
+							统一使用单引号(‘)，不使用双引号(“)。这在创建 HTML 字符串非常有好处：<br />
+							<strong>正例:</strong>
+						</p>
+						<pre class="prettyprint"><code class="prism language-js has-numbering">   <span class="token keyword">let</span> str <span class="token operator">=</span> <span class="token string">'foo'</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> testDiv <span class="token operator">=</span> <span class="token string">'&lt;div id="test"&gt;&lt;/div&gt;'</span><span class="token punctuation">;</span> 
+</code></pre>
+						<p><strong>反例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-js has-numbering"><span class="token keyword">let</span> str <span class="token operator">=</span> <span class="token string">'foo'</span><span class="token punctuation">;</span> 
+<span class="token keyword">let</span> testDiv <span class="token operator">=</span> <span class="token string">"&lt;div id='test'&gt;&lt;/div&gt;"</span><span class="token punctuation">;</span>
+</code></pre>
+						<h4><a id="154__362" rel="noopener"></a>1.5.4 对象声明</h4>
+						<h5><a id="1__363" rel="noopener"></a>1) 使用字面值创建对象</h5>
+						<p>
+							<strong>正例：</strong> <code>let user = {};</code><br />
+							<strong>反例：</strong> <code>let user = new Object();</code>
+						</p>
+						<h5><a id="2__366" rel="noopener"></a>2) 使用字面量来代替对象构造器</h5>
+						<p>
+							<strong>正例：</strong> <code>var user = { age: 0, name: 1, city: 3 };</code><br />
+							<strong>反例：</strong>
+						</p>
+						<pre class="prettyprint"><code class="prism language-js has-numbering"><span class="token keyword">var</span> user <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+user<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 
+user<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 
+user<span class="token punctuation">.</span>city <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 
+</code></pre>
+						<h4><a id="155__ES6_376" rel="noopener"></a>1.5.5 使用 ES6+</h4>
+						<blockquote><p>必须优先使用 ES6+ 中新增的语法糖和函数。这将简化你的程序，并让你的代码更加灵活和可复 用。比如箭头函数、await/async ， 解构， let ， for…of 等等。</p></blockquote>
+						<h4><a id="156__379" rel="noopener"></a>1.5.6 括号</h4>
+						<blockquote><p>下列关键字后必须有大括号（即使代码块的内容只有一行）：if, else, for, while, do, switch, try,catch, finally, with。</p></blockquote>
+						<p><strong>正例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-js has-numbering"><span class="token keyword">if</span> <span class="token punctuation">(</span>condition<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+<span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+						<p><strong>反例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-js has-numbering"><span class="token keyword">if</span> <span class="token punctuation">(</span>condition<span class="token punctuation">)</span> <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+						<h4><a id="157_undefined__395" rel="noopener"></a>1.5.7 undefined 判断</h4>
+						<p>
+							永远不要直接使用 undefined 进行变量判断；使用 typeof 和字符串’undefined’对变量进行判断。<br />
+							<strong>正例：</strong>
+						</p>
+						<pre class="prettyprint"><code class="prism language-js has-numbering"> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> person <span class="token operator">===</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span>
+</code></pre>
+						<p><strong>反例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-js has-numbering"><span class="token keyword">if</span> <span class="token punctuation">(</span>person <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span>
+</code></pre>
+						<h4><a id="158__405" rel="noopener"></a>1.5.8 条件判断和循环最多三层</h4>
+						<blockquote><p>条件判断能使用三目运算符和逻辑运算符解决的，就不要使用条件判断，但是谨记不要写太长的 三目运算符。如果超过 3 层请抽成函数，并写清楚注释。</p></blockquote>
+						<h4><a id="159_this__409" rel="noopener"></a>1.5.9 this 的转换命名</h4>
+						<blockquote><p>对上下文 this 的引用只能使用 ’self’ 来命名。</p></blockquote>
+						<h4><a id="1510__consolelog_413" rel="noopener"></a>1.5.10 慎用 console.log</h4>
+						<blockquote><p>因 console.log 大量使用会有性能问题，所以在非 webpack 项目中谨慎使用 log 功能。</p></blockquote>
+						<h2><a id="Vue__416" rel="noopener"></a>二、Vue 项目规范</h2>
+						<h3><a id="_Vue__417" rel="noopener"></a>(一) Vue 编码基础</h3>
+						<p>vue 项目规范以 Vue 官方规范 （<a href="https://cn.vuejs.org/v2/style-guide/%5D" rel="noopener">https://cn.vuejs.org/v2/style-guide/</a>） 中的 A 规范为基础，在其上面进行项目开发，故所有代码均遵守该规范。</p>
+						<p><em>请仔仔细细阅读 Vue 官方规范，切记，此为第一步。</em></p>
+						<h4><a id="211__422" rel="noopener"></a>2.1.1. 组件规范</h4>
+						<h5><a id="1__423" rel="noopener"></a>1) 组件名为多个单词。</h5>
+						<p>组件名应该始终是多个单词组成（大于等于 2），且命名规范为KebabCase格式。</p>
+						<p>这样做可以避免跟现有的以及未来的 HTML 元素相冲突，因为所有的 HTML 元素名称都是单个单词的。</p>
+						<p><strong>正例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-js has-numbering"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+name<span class="token operator">:</span> <span class="token string">'TodoItem'</span>
+<span class="token comment">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+						<p><strong>反例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-js has-numbering">
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+name<span class="token operator">:</span> <span class="token string">'Todo'</span><span class="token punctuation">,</span>
+<span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+name<span class="token operator">:</span> <span class="token string">'todo-item'</span><span class="token punctuation">,</span>
+<span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+</code></pre>
+						<h5><a id="2__pascalcase__447" rel="noopener"></a>2) 组件文件名为 pascal-case 格式</h5>
+						<p><strong>正例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-js has-numbering">components<span class="token operator">/</span>
+<span class="token operator">|</span><span class="token operator">-</span> my<span class="token operator">-</span>component<span class="token punctuation">.</span>vue
+</code></pre>
+						<p><strong>反例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-js has-numbering">components<span class="token operator">/</span>
+<span class="token operator">|</span><span class="token operator">-</span> myComponent<span class="token punctuation">.</span>vue
+<span class="token operator">|</span><span class="token operator">-</span> MyComponent<span class="token punctuation">.</span>vue
+</code></pre>
+						<h5><a id="3__base__462" rel="noopener"></a>3) 基础组件文件名为 base 开头，使用完整单词而不是缩写。</h5>
+						<p><strong>正例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-js has-numbering">components<span class="token operator">/</span>
+<span class="token operator">|</span><span class="token operator">-</span> base<span class="token operator">-</span>button<span class="token punctuation">.</span>vue
+<span class="token operator">|</span><span class="token operator">-</span> base<span class="token operator">-</span>table<span class="token punctuation">.</span>vue
+<span class="token operator">|</span><span class="token operator">-</span> base<span class="token operator">-</span>icon<span class="token punctuation">.</span>vue
+</code></pre>
+						<p><strong>反例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-js has-numbering">components<span class="token operator">/</span>
+<span class="token operator">|</span><span class="token operator">-</span> MyButton<span class="token punctuation">.</span>vue
+<span class="token operator">|</span><span class="token operator">-</span> VueTable<span class="token punctuation">.</span>vue
+<span class="token operator">|</span><span class="token operator">-</span> Icon<span class="token punctuation">.</span>vue
+</code></pre>
+						<h5><a id="4__480" rel="noopener"></a>4) 和父组件紧密耦合的子组件应该以父组件名作为前缀命名</h5>
+						<p><strong>正例：</strong></p>
+						<pre class="prettyprint"><code class="has-numbering">components/
+|- todo-list.vue
+|- todo-list-item.vue
+|- todo-list-item-button.vue
+|- user-profile-options.vue （完整单词）
+</code></pre>
+						<p><strong>反例：</strong></p>
+						<pre class="prettyprint"><code class="has-numbering">components/
+|- TodoList.vue
+|- TodoItem.vue
+|- TodoButton.vue
+|- UProfOpts.vue （使用了缩写）
+</code></pre>
+						<h5><a id="5__Template__PascalCase__500" rel="noopener"></a>5) 在 Template 模版中使用组件，应使用 PascalCase 模式，并且使用自闭合组件。</h5>
+						<p><strong>正例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 在单文件组件、字符串模板和 <span class="token constant">JSX</span> 中 <span class="token operator">--</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>MyComponent <span class="token operator">/</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>Row<span class="token operator">&gt;</span><span class="token operator">&lt;</span>table <span class="token operator">:</span>column<span class="token operator">=</span><span class="token string">"data"</span><span class="token operator">/</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>Row<span class="token operator">&gt;</span>
+</code></pre>
+						<p><strong>反例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token operator">&lt;</span>my<span class="token operator">-</span>component <span class="token operator">/</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>row<span class="token operator">&gt;</span><span class="token operator">&lt;</span>table <span class="token operator">:</span>column<span class="token operator">=</span><span class="token string">"data"</span><span class="token operator">/</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>row<span class="token operator">&gt;</span>
+</code></pre>
+						<h5><a id="6__data__515" rel="noopener"></a>6) 组件的 data 必须是一个函数</h5>
+						<blockquote><p>当在组件中使用 data 属性的时候 (除了 new Vue 外的任何地方)，它的值必须是返回一个对象的函数。因为如果直接是一个对象的话，子组件之间的属性值会互相影响。</p></blockquote>
+						<p><strong>正例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+<span class="token function">data</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">return</span> <span class="token punctuation">{</span>
+name<span class="token operator">:</span> <span class="token string">'jack'</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+						<p><strong>反例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+data<span class="token operator">:</span> <span class="token punctuation">{</span>
+name<span class="token operator">:</span> <span class="token string">'jack'</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+						<h5><a id="7_Prop__540" rel="noopener"></a>7) Prop 定义应该尽量详细</h5>
+						<p>
+							必须使用 camelCase 驼峰命名<br />
+							必须指定类型<br />
+							必须加上注释，表明其含义<br />
+							必须加上 required 或者 default，两者二选其一<br />
+							如果有业务需要，必须加上 validator 验证
+						</p>
+						<p><strong>正例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"> props<span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token comment">// 组件状态，用于控制组件的颜色</span>
+status<span class="token operator">:</span> <span class="token punctuation">{</span>
+type<span class="token operator">:</span> String<span class="token punctuation">,</span>
+required<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+<span class="token function-variable function">validator</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">return</span> <span class="token punctuation">[</span>
+  <span class="token string">'succ'</span><span class="token punctuation">,</span>
+  <span class="token string">'info'</span><span class="token punctuation">,</span>
+  <span class="token string">'error'</span>
+<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token operator">-</span><span class="token number">1</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token comment">// 用户级别，用于显示皇冠个数</span>
+userLevel：<span class="token punctuation">{</span>
+type<span class="token operator">:</span> String<span class="token punctuation">,</span>
+required<span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+						<h5><a id="8__571" rel="noopener"></a>8) 为组件样式设置作用域</h5>
+						<p><strong>正例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>button <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"btn btn-close"</span><span class="token operator">&gt;</span><span class="token constant">X</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 使用 <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">scoped</span><span class="token template-punctuation string">`</span></span> 特性 <span class="token operator">--</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>style scoped<span class="token operator">&gt;</span>
+<span class="token punctuation">.</span>btn<span class="token operator">-</span>close <span class="token punctuation">{</span>
+background<span class="token operator">-</span>color<span class="token operator">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">&gt;</span>
+</code></pre>
+						<p><strong>反例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>button <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"btn btn-close"</span><span class="token operator">&gt;</span><span class="token constant">X</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 没有使用 <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">scoped</span><span class="token template-punctuation string">`</span></span> 特性 <span class="token operator">--</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>style<span class="token operator">&gt;</span>
+<span class="token punctuation">.</span>btn<span class="token operator">-</span>close <span class="token punctuation">{</span>
+background<span class="token operator">-</span>color<span class="token operator">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">&gt;</span>
+</code></pre>
+						<h5><a id="9__601" rel="noopener"></a>9) 如果特性元素较多，应该主动换行。</h5>
+						<p><strong>正例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token operator">&lt;</span>MyComponent foo<span class="token operator">=</span><span class="token string">"a"</span> bar<span class="token operator">=</span><span class="token string">"b"</span> baz<span class="token operator">=</span><span class="token string">"c"</span>
+foo<span class="token operator">=</span><span class="token string">"a"</span> bar<span class="token operator">=</span><span class="token string">"b"</span> baz<span class="token operator">=</span><span class="token string">"c"</span>
+foo<span class="token operator">=</span><span class="token string">"a"</span> bar<span class="token operator">=</span><span class="token string">"b"</span> baz<span class="token operator">=</span><span class="token string">"c"</span>
+<span class="token operator">/</span><span class="token operator">&gt;</span>
+</code></pre>
+						<p><strong>反例：</strong></p>
+						<pre
+							class="prettyprint"
+						><code class="prism language-javascript has-numbering"><span class="token operator">&lt;</span>MyComponent foo<span class="token operator">=</span><span class="token string">"a"</span> bar<span class="token operator">=</span><span class="token string">"b"</span> baz<span class="token operator">=</span><span class="token string">"c"</span> foo<span class="token operator">=</span><span class="token string">"a"</span> bar<span class="token operator">=</span><span class="token string">"b"</span> baz<span class="token operator">=</span><span class="token string">"c"</span> foo<span class="token operator">=</span><span class="token string">"a"</span> bar<span class="token operator">=</span><span class="token string">"b"</span> baz<span class="token operator">=</span><span class="token string">"c"</span> foo<span class="token operator">=</span><span class="token string">"a"</span> bar<span class="token operator">=</span><span class="token string">"b"</span> baz<span class="token operator">=</span><span class="token string">"c"</span><span class="token operator">/</span><span class="token operator">&gt;</span>
+</code></pre>
+						<h4><a id="212__616" rel="noopener"></a>2.1.2. 模板中使用简单的表达式</h4>
+						<p>组件模板应该只包含简单的表达式，复杂的表达式则应该重构为计算属性或方法。复杂表达式会让你的模板变得不那么声明式。我们应该尽量描述应该出现的是什么，而非如何计算那个值。而且计算属性和方法使得代码可以重用。</p>
+						<p>正例：</p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>p<span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token punctuation">{</span> normalizedFullName <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+<span class="token comment">// 复杂表达式已经移入一个计算属性</span>
+computed<span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token function-variable function">normalizedFullName</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>fullName<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">word</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">return</span> word<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> word<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+						<p><strong>反例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>p<span class="token operator">&gt;</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span>
+  fullName<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">word</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> word<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> word<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+</code></pre>
+						<h4><a id="213__648" rel="noopener"></a>2.1.3 指令都使用缩写形式</h4>
+						<p>指令推荐都使用缩写形式，(用 : 表示 v-bind: 、用 @ 表示 v-on: 和用 # 表示 v-slot:)</p>
+						<p><strong>正例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token operator">&lt;</span>input
+@input<span class="token operator">=</span><span class="token string">"onInput"</span>
+@focus<span class="token operator">=</span><span class="token string">"onFocus"</span>
+<span class="token operator">&gt;</span>
+</code></pre>
+						<p><strong>反例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token operator">&lt;</span>input
+v<span class="token operator">-</span>on<span class="token operator">:</span>input<span class="token operator">=</span><span class="token string">"onInput"</span>
+@focus<span class="token operator">=</span><span class="token string">"onFocus"</span>
+<span class="token operator">&gt;</span>
+</code></pre>
+						<h4><a id="214__668" rel="noopener"></a>2.1.4 标签顺序保持一致</h4>
+						<p>单文件组件应该总是让标签顺序保持为 `</p>
+						<p><strong>正例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span><span class="token operator">...</span><span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token operator">...</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>style<span class="token operator">&gt;</span><span class="token operator">...</span><span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">&gt;</span>
+</code></pre>
+						<p><strong>反例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span><span class="token operator">...</span><span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>style<span class="token operator">&gt;</span><span class="token operator">...</span><span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token operator">...</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre>
+						<h4><a id="215__vfor__key_687" rel="noopener"></a>2.1.5 必须为 v-for 设置键值 key</h4>
+						<h4><a id="216_vshow__vif__688" rel="noopener"></a>2.1.6 v-show 与 v-if 选择</h4>
+						<p>如果运行时，需要非常频繁地切换，使用 v-show ；如果在运行时，条件很少改变，使用 v-if。</p>
+						<h4><a id="217_script__691" rel="noopener"></a>2.1.7 script 标签内部结构顺序</h4>
+						<p>components &gt; props &gt; data &gt; computed &gt; watch &gt; filter &gt; 钩子函数（钩子函数按其执行顺序） &gt; methods</p>
+						<h4><a id="218_Vue_Router__694" rel="noopener"></a>2.1.8 Vue Router 规范</h4>
+						<h5><a id="1__695" rel="noopener"></a>1) 页面跳转数据传递使用路由参数</h5>
+						<p>页面跳转，例如 A 页面跳转到 B 页面，需要将 A 页面的数据传递到 B 页面，推荐使用 路由参数进行传参，而不是将需要传递的数据保存 vuex，然后在 B 页面取出 vuex 的数据，因为如果在 B 页面刷新会导致 vuex 数据丢失，导致 B 页面无法正常显示数据。</p>
+						<p><strong>正例：</strong></p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token keyword">let</span> id <span class="token operator">=</span> <span class="token string">' 123'</span><span class="token punctuation">;</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">'userCenter'</span><span class="token punctuation">,</span> query<span class="token operator">:</span> <span class="token punctuation">{</span> id<span class="token operator">:</span> id <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+						<h5><a id="2__705" rel="noopener"></a>2) 使用路由懒加载（延迟加载）机制</h5>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token punctuation">{</span>
+path<span class="token operator">:</span> <span class="token string">'/uploadAttachment'</span><span class="token punctuation">,</span>
+name<span class="token operator">:</span> <span class="token string">'uploadAttachment'</span><span class="token punctuation">,</span>
+meta<span class="token operator">:</span> <span class="token punctuation">{</span>
+title<span class="token operator">:</span> <span class="token string">'上传附件'</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token function-variable function">component</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'@/view/components/uploadAttachment/index.vue'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre>
+						<h5><a id="3_router__718" rel="noopener"></a>3) router 中的命名规范</h5>
+						<p>path、childrenPoints 命名规范采用kebab-case命名规范（尽量vue文件的目录结构保持一致，因为目录、文件名都是kebab-case，这样很方便找到对应的文件）</p>
+						<p>name 命名规范采用KebabCase命名规范且和component组件名保持一致！（因为要保持keep-alive特性，keep-alive按照component的name进行缓存，所以两者必须高度保持一致）</p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token comment">// 动态加载</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> reload <span class="token operator">=</span> <span class="token punctuation">[</span>
+<span class="token punctuation">{</span>
+path<span class="token operator">:</span> <span class="token string">'/reload'</span><span class="token punctuation">,</span>
+name<span class="token operator">:</span> <span class="token string">'reload'</span><span class="token punctuation">,</span>
+component<span class="token operator">:</span> Main<span class="token punctuation">,</span>
+meta<span class="token operator">:</span> <span class="token punctuation">{</span>
+title<span class="token operator">:</span> <span class="token string">'动态加载'</span><span class="token punctuation">,</span>
+icon<span class="token operator">:</span> <span class="token string">'icon iconfont'</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+children<span class="token operator">:</span> <span class="token punctuation">[</span>
+<span class="token punctuation">{</span>
+path<span class="token operator">:</span> <span class="token string">'/reload/smart-reload-list'</span><span class="token punctuation">,</span>
+name<span class="token operator">:</span> <span class="token string">'SmartReloadList'</span><span class="token punctuation">,</span>
+meta<span class="token operator">:</span> <span class="token punctuation">{</span>
+  title<span class="token operator">:</span> <span class="token string">'SmartReload'</span><span class="token punctuation">,</span>
+  childrenPoints<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      title<span class="token operator">:</span> <span class="token string">'查询'</span><span class="token punctuation">,</span>
+      name<span class="token operator">:</span> <span class="token string">'smart-reload-search'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      title<span class="token operator">:</span> <span class="token string">'执行reload'</span><span class="token punctuation">,</span>
+      name<span class="token operator">:</span> <span class="token string">'smart-reload-update'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      title<span class="token operator">:</span> <span class="token string">'查看执行结果'</span><span class="token punctuation">,</span>
+      name<span class="token operator">:</span> <span class="token string">'smart-reload-result'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token function-variable function">component</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span>
+  <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'@/views/reload/smart-reload/smart-reload-list.vue'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+						<h5><a id="4_router__path__763" rel="noopener"></a>4) router 中的 path 命名规范</h5>
+						<p>path除了采用kebab-case命名规范以外，必须以 / 开头，即使是children里的path也要以 / 开头。如下示例</p>
+						<p><strong>目的：</strong></p>
+						<p>经常有这样的场景：某个页面有问题，要立刻找到这个vue文件，如果不用以/开头，path为parent和children组成的，可能经常需要在router文件里搜索多次才能找到，而如果以/开头，则能立刻搜索到对应的组件</p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token punctuation">{</span>
+path<span class="token operator">:</span> <span class="token string">'/file'</span><span class="token punctuation">,</span>
+name<span class="token operator">:</span> <span class="token string">'File'</span><span class="token punctuation">,</span>
+component<span class="token operator">:</span> Main<span class="token punctuation">,</span>
+meta<span class="token operator">:</span> <span class="token punctuation">{</span>
+title<span class="token operator">:</span> <span class="token string">'文件服务'</span><span class="token punctuation">,</span>
+icon<span class="token operator">:</span> <span class="token string">'ios-cloud-upload'</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+children<span class="token operator">:</span> <span class="token punctuation">[</span>
+<span class="token punctuation">{</span>
+path<span class="token operator">:</span> <span class="token string">'/file/file-list'</span><span class="token punctuation">,</span>
+name<span class="token operator">:</span> <span class="token string">'FileList'</span><span class="token punctuation">,</span>
+<span class="token function-variable function">component</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'@/views/file/file-list.vue'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">{</span>
+path<span class="token operator">:</span> <span class="token string">'/file/file-add'</span><span class="token punctuation">,</span>
+name<span class="token operator">:</span> <span class="token string">'FileAdd'</span><span class="token punctuation">,</span>
+<span class="token function-variable function">component</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'@/views/file/file-add.vue'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">{</span>
+path<span class="token operator">:</span> <span class="token string">'/file/file-update'</span><span class="token punctuation">,</span>
+name<span class="token operator">:</span> <span class="token string">'FileUpdate'</span><span class="token punctuation">,</span>
+<span class="token function-variable function">component</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'@/views/file/file-update.vue'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+						<h3><a id="_Vue__798" rel="noopener"></a>(二) Vue 项目目录规范</h3>
+						<h4><a id="221__799" rel="noopener"></a>2.2.1 基础</h4>
+						<p>vue 项目中的所有命名一定要与后端命名统一。</p>
+						<p>比如权限：后端 privilege, 前端无论 router , store, api 等都必须使用 privielege 单词！</p>
+						<h4><a id="222__Vuecli__804" rel="noopener"></a>2.2.2 使用 Vue-cli 脚手架</h4>
+						<p>使用 vue-cli3 来初始化项目，项目名按照上面的命名规范。</p>
+						<h4><a id="223__807" rel="noopener"></a>2.2.3 目录说明</h4>
+						<p>目录名按照上面的命名规范，其中 components 组件用大写驼峰，其余除 components 组件目录外的所有目录均使用 kebab-case 命名。</p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering">src                                  源码目录
+<span class="token operator">|</span><span class="token operator">--</span> api                              所有api接口
+<span class="token operator">|</span><span class="token operator">--</span> assets                           静态资源，images<span class="token punctuation">,</span> icons<span class="token punctuation">,</span> styles等
+<span class="token operator">|</span><span class="token operator">--</span> components                       公用组件
+<span class="token operator">|</span><span class="token operator">--</span> config                           配置信息
+<span class="token operator">|</span><span class="token operator">--</span> constants                        常量信息，项目所有Enum<span class="token punctuation">,</span> 全局常量等
+<span class="token operator">|</span><span class="token operator">--</span> directives                       自定义指令
+<span class="token operator">|</span><span class="token operator">--</span> filters                          过滤器，全局工具
+<span class="token operator">|</span><span class="token operator">--</span> datas                            模拟数据，临时存放
+<span class="token operator">|</span><span class="token operator">--</span> lib                              外部引用的插件存放及修改文件
+<span class="token operator">|</span><span class="token operator">--</span> mock                             模拟接口，临时存放
+<span class="token operator">|</span><span class="token operator">--</span> plugins                          插件，全局使用
+<span class="token operator">|</span><span class="token operator">--</span> router                           路由，统一管理
+<span class="token operator">|</span><span class="token operator">--</span> store                            vuex<span class="token punctuation">,</span> 统一管理
+<span class="token operator">|</span><span class="token operator">--</span> themes                           自定义样式主题
+<span class="token operator">|</span><span class="token operator">--</span> views                            视图目录
+<span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> role                                 role模块名
+<span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> <span class="token operator">|</span><span class="token operator">--</span> role<span class="token operator">-</span>list<span class="token punctuation">.</span>vue                    role列表页面
+<span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> <span class="token operator">|</span><span class="token operator">--</span> role<span class="token operator">-</span>add<span class="token punctuation">.</span>vue                     role新建页面
+<span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> <span class="token operator">|</span><span class="token operator">--</span> role<span class="token operator">-</span>update<span class="token punctuation">.</span>vue                  role更新页面
+<span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> <span class="token operator">|</span><span class="token operator">--</span> index<span class="token punctuation">.</span>less                       role模块样式
+<span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> <span class="token operator">|</span><span class="token operator">--</span> components                       role模块通用组件文件夹
+<span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> employee                             employee模块
+</code></pre>
+						<h5><a id="1_api__836" rel="noopener"></a>1) api 目录</h5>
+						<ul>
+							<li>文件、变量命名要与后端保持一致。</li>
+							<li>此目录对应后端 API 接口，按照后端一个 controller 一个 api js 文件。若项目较大时，可以按照业务划分子目录，并与后端保持一致。</li>
+							<li>api 中的方法名字要与后端 api url 尽量保持语义高度一致性。</li>
+							<li>对于 api 中的每个方法要添加注释，注释与后端 swagger 文档保持一致。</li>
+						</ul>
+						<p><strong>正例：</strong></p>
+						<p>后端 url： EmployeeController.java</p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token operator">/</span>employee<span class="token operator">/</span>add
+<span class="token operator">/</span>employee<span class="token operator">/</span><span class="token keyword">delete</span><span class="token operator">/</span><span class="token punctuation">{</span>id<span class="token punctuation">}</span>
+<span class="token operator">/</span>employee<span class="token operator">/</span>update
+</code></pre>
+						<p>前端： employee.js</p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering">  <span class="token comment">// 添加员工</span>
+<span class="token function-variable function">addEmployee</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+<span class="token keyword">return</span> <span class="token function">postAxios</span><span class="token punctuation">(</span><span class="token string">'/employee/add'</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token comment">// 更新员工信息</span>
+<span class="token function-variable function">updateEmployee</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+<span class="token keyword">return</span> <span class="token function">postAxios</span><span class="token punctuation">(</span><span class="token string">'/employee/update'</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token comment">// 删除员工</span>
+<span class="token function-variable function">deleteEmployee</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">employeeId</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+<span class="token keyword">return</span> <span class="token function">postAxios</span><span class="token punctuation">(</span><span class="token string">'/employee/delete/'</span> <span class="token operator">+</span> employeeId<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre>
+						<h5><a id="2_assets__870" rel="noopener"></a>2) assets 目录</h5>
+						<p>assets 为静态资源，里面存放 images, styles, icons 等静态资源，静态资源命名格式为 kebab-case</p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token operator">|</span>assets
+<span class="token operator">|</span><span class="token operator">--</span> icons
+<span class="token operator">|</span><span class="token operator">--</span> images
+<span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> background<span class="token operator">-</span>color<span class="token punctuation">.</span>png
+<span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> upload<span class="token operator">-</span>header<span class="token punctuation">.</span>png
+<span class="token operator">|</span><span class="token operator">--</span> styles
+</code></pre>
+						<h4><a id="3_components__883" rel="noopener"></a>3) components 目录</h4>
+						<p>此目录应按照组件进行目录划分，目录命名为 KebabCase，组件命名规则也为 KebabCase</p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token operator">|</span>components
+<span class="token operator">|</span><span class="token operator">--</span> error<span class="token operator">-</span>log
+<span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> index<span class="token punctuation">.</span>vue
+<span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> index<span class="token punctuation">.</span>less
+<span class="token operator">|</span><span class="token operator">--</span> markdown<span class="token operator">-</span>editor
+<span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> index<span class="token punctuation">.</span>vue
+<span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> index<span class="token punctuation">.</span>js
+<span class="token operator">|</span><span class="token operator">--</span> kebab<span class="token operator">-</span><span class="token keyword">case</span>
+</code></pre>
+						<h5><a id="4_constants__897" rel="noopener"></a>4) constants 目录</h5>
+						<p>此目录存放项目所有常量，如果常量在 vue 中使用，请使用 vue-enum 插件(<a href="https://www.npmjs.com/package/vue-enum" rel="noopener">https://www.npmjs.com/package/vue-enum</a>)</p>
+						<p>目录结构：</p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token operator">|</span>constants
+<span class="token operator">|</span><span class="token operator">--</span> index<span class="token punctuation">.</span>js
+<span class="token operator">|</span><span class="token operator">--</span> role<span class="token punctuation">.</span>js
+<span class="token operator">|</span><span class="token operator">--</span> employee<span class="token punctuation">.</span>js
+</code></pre>
+						<p>例子： employee.js</p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token constant">EMPLOYEE_STATUS</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token constant">NORMAL</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+value<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+desc<span class="token operator">:</span> <span class="token string">'正常'</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token constant">DISABLED</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+value<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+desc<span class="token operator">:</span> <span class="token string">'禁用'</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token constant">DELETED</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+value<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+desc<span class="token operator">:</span> <span class="token string">'已删除'</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token constant">EMPLOYEE_ACCOUNT_TYPE</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token constant">QQ</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+value<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+desc<span class="token operator">:</span> <span class="token string">'QQ登录'</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token constant">WECHAT</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+value<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+desc<span class="token operator">:</span> <span class="token string">'微信登录'</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token constant">DINGDING</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+value<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+desc<span class="token operator">:</span> <span class="token string">'钉钉登录'</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token constant">USERNAME</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+value<span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+desc<span class="token operator">:</span> <span class="token string">'用户名密码登录'</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+<span class="token constant">EMPLOYEE_STATUS</span><span class="token punctuation">,</span>
+<span class="token constant">EMPLOYEE_ACCOUNT_TYPE</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+						<h4><a id="5_router__store__951" rel="noopener"></a>5) router 与 store 目录</h4>
+						<p>这两个目录一定要将业务进行拆分，不能放到一个 js 文件里。</p>
+						<p>router 尽量按照 views 中的结构保持一致</p>
+						<p>store 按照业务进行拆分不同的 js 文件</p>
+						<h5><a id="6_views__958" rel="noopener"></a>6) views 目录</h5>
+						<p>
+							命名要与后端、router、api 等保持一致<br />
+							components 中组件要使用 PascalCase 规则
+						</p>
+						<pre class="prettyprint"><code class="prism language-javascript has-numbering"><span class="token operator">|</span><span class="token operator">--</span> views                                    视图目录
+<span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> role                                 role模块名
+<span class="token operator">|</span>   <span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> role<span class="token operator">-</span>list<span class="token punctuation">.</span>vue                    role列表页面
+<span class="token operator">|</span>   <span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> role<span class="token operator">-</span>add<span class="token punctuation">.</span>vue                     role新建页面
+<span class="token operator">|</span>   <span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> role<span class="token operator">-</span>update<span class="token punctuation">.</span>vue                  role更新页面
+<span class="token operator">|</span>   <span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> index<span class="token punctuation">.</span>less                      role模块样式
+<span class="token operator">|</span>   <span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> components                      role模块通用组件文件夹
+<span class="token operator">|</span>   <span class="token operator">|</span>   <span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> role<span class="token operator">-</span>header<span class="token punctuation">.</span>vue             role头部组件
+<span class="token operator">|</span>   <span class="token operator">|</span>   <span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> role<span class="token operator">-</span>modal<span class="token punctuation">.</span>vue              role弹出框组件
+<span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> employee                            employee模块
+<span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> behavior<span class="token operator">-</span>log                        行为日志log模块
+<span class="token operator">|</span>   <span class="token operator">|</span><span class="token operator">--</span> code<span class="token operator">-</span>generator                      代码生成器模块
+</code></pre>
+						<h4><a id="224__976" rel="noopener"></a>2.2.4 注释说明</h4>
+						<p>整理必须加注释的地方</p>
+						<ul>
+							<li>公共组件使用说明</li>
+							<li>api 目录的接口 js 文件必须加注释</li>
+							<li>store 中的 state, mutation, action 等必须加注释</li>
+							<li>vue 文件中的 template 必须加注释，若文件较大添加 start end 注释</li>
+							<li>vue 文件的 methods，每个 method 必须添加注释</li>
+							<li>vue 文件的 data, 非常见单词要加注释</li>
+						</ul>
+						<h4><a id="225__985" rel="noopener"></a>2.2.5 其他</h4>
+						<h5><a id="1__DOM_986" rel="noopener"></a>1) 尽量不要手动操作 DOM</h5>
+						<p>因使用 vue 框架，所以在项目开发中尽量使用 vue 的数据驱动更新 DOM，尽量（不到万不得已）不要手动操作 DOM，包括：增删改 dom 元素、以及更改样式、添加事件等。</p>
+						<h5><a id="2__989" rel="noopener"></a>2) 删除无用代码</h5>
+						<p>因使用了 git/svn 等代码版本工具，对于无用代码必须及时删除，例如：一些调试的 console 语句、无用的弃用功能代码。</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ies ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ies ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ies ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ies ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Questions</title>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<style>
+    body{font-family:"Microsoft YaHei";font-size:12px;background:#FFF;}
+    body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{padding:0;margin:0}
+    fieldset,img{border:0;vertical-align:bottom}
+    address,caption,cite,code,dfn,em,th,var{font-weight:normal;font-style:normal}
+    ol,ul{list-style:none}
+    caption,th{text-align:left}
+    h1,h2,h3,h4,h5,h6{font-weight:normal;font-size:100%}
+    abbr,acronym{border:0}
+    button,input,select,textarea{font-size:100%;cursor:pointer}
+    input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit}
+    input{border:0}
+    .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .clear{clear:both;line-height:0;height:0;font-size:0}
+    input[type="reset"]::-moz-focus-inner,input[type="button"]::-moz-focus-inner,input[type="submit"]::-moz-focus-inner,input[type="file"]>input[type="button"]::-moz-focus-inner{border:0;padding:0}
+    a{text-decoration:none}
+</style>
+<style type="text/css">
+body {background:#191970;}
+title {display:flex;align-items:center;justify-content:center;height:200px; font-size: 32px; color:#FFF;}
+.section{width:1200px; height:auto; border:1px solid #000; margin: 0 auto;}
+
+.section ul {overflow:hidden;}
+.section li {position:relative;width:1200px;height:270px;overflow:hidden;}
+
+.section h5,.section h5 span,.section h5 strong {position:absolute;top:0;left:0;width:1200px;cursor:pointer;}
+
+.section h5 strong {z-index:3;display:none; height:50px;}
+.section h5 span{background:#CCC; margin-bottom:2px; height:50px;}
+.section h5 strong{background:#CCC;}
+
+.section .tebg{width:100%; height:auto; margin-top:50px; overflow:hidden; position:relative; background:#FFF;}
+
+</style>
+</head>
+
+<body>
+<title>Questions</title>
+<ul class="section">
+    <li class="ts1">
+        <h5><span>222</span><strong>222</strong></h5>
+        <div class="tebg">
+            11111111
+            <p>ddd</p>
+            <p>ddd</p>
+            <p>ddd</p>
+            <p>ddd</p>
+            <p>ddd</p>
+            <p>ddd</p>
+            <p>ddd</p>
+            <p>ddd</p>
+            <p>ddd</p>
+            <p>ddd</p>
+        </div>
+    </li>
+    <li class="ts2">
+        <h5><span></span><strong></strong></h5>
+        <div class="tebg">
+            2222
+        </div>
+    </li>
+    <li class="ts3">
+        <h5><span></span><strong></strong></h5>
+        <div class="tebg">
+            3333
+        </div>
+    </li>
+    <li class="ts4">
+        <h5><span></span><strong></strong></h5>
+        <div class="tebg">
+            44444
+        </div>
+    </li>
+</ul>
+ 
+<script src="http://s2.qhimg.com/!3b1458e3/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){		   
+	$('.section li h5').on('click',function(){
+		$(this).parent('li').animate({'height':'100px'},300);
+		$(this).children('strong').fadeIn(300);
+		$(this).children('span').fadeOut(300);
+		$(this).parent('li').siblings('li').animate({'height':'50px'},300);
+		$(this).parent('li').siblings('li').find('strong').fadeOut(300);
+		$(this).parent('li').siblings('li').find('span').fadeIn(300);
+	});
+	$('.section li').eq(0).children('h5').trigger('click');
+})
+</script>
+
+
+</body>
+</html>

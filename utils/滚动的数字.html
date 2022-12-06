@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			html,
+			body {
+				overflow: hidden;
+			}
+			body {
+				position: relative;
+				background: #000;
+			}
+		</style>
+	</head>
+	<body></body>
+	<script>
+		/*
+		 * File Name / no name
+		 * Created Date / Oct 7, 2020
+		 * Aurhor / Toshiya Marukubo
+		 * Twitter / https://twitter.com/toshiyamarukubo
+		 */
+
+		/*
+  Common Tool.
+*/
+
+		class Tool {
+			// random number.
+			static randomNumber(min, max) {
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+			// random color rgb.
+			static randomColorRGB() {
+				return (
+					'rgb(' +
+					this.randomNumber(0, 255) +
+					', ' +
+					this.randomNumber(0, 255) +
+					', ' +
+					this.randomNumber(0, 255) +
+					')'
+				);
+			}
+			// random color hsl.
+			static randomColorHSL(saturation, lightness) {
+				return 'hsl(' + this.randomNumber(0, 360) + ', ' + saturation + '%, ' + lightness + '%)';
+			}
+			// gradient color.
+			static gradientColor(ctx, cr, cg, cb, ca, x, y, r) {
+				const col = cr + ',' + cg + ',' + cb;
+				const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+				g.addColorStop(0, 'rgba(' + col + ', ' + ca * 1 + ')');
+				g.addColorStop(0.5, 'rgba(' + col + ', ' + ca * 0.5 + ')');
+				g.addColorStop(1, 'rgba(' + col + ', ' + ca * 0 + ')');
+				return g;
+			}
+		}
+
+		/*
+  When want to use angle.
+*/
+
+		class Angle {
+			constructor(angle) {
+				this.a = angle;
+				this.rad = (this.a * Math.PI) / 180;
+			}
+
+			incDec(num) {
+				this.a += num;
+				this.rad = (this.a * Math.PI) / 180;
+				return this.rad;
+			}
+		}
+
+		/*
+  When want to use controller.
+*/
+
+		class Controller {
+			constructor(id) {
+				this.id = document.getElementById(id);
+			}
+			getVal() {
+				return this.id.value;
+			}
+		}
+
+		/*
+  When want to use time.
+*/
+
+		class Time {
+			constructor(time) {
+				this.startTime = time;
+				this.lastTime;
+				this.elapsedTime;
+			}
+
+			getElapsedTime() {
+				this.lastTime = Date.now();
+				this.elapsedTime = (this.startTime - this.lastTime) * -1;
+				return this.elapsedTime;
+			}
+		}
+
+		let canvas;
+
+		class Canvas {
+			constructor(bool) {
+				// create canvas.
+				this.canvas = document.createElement('canvas');
+				// if on screen.
+				if (bool === true) {
+					this.canvas.style.display = 'block';
+					this.canvas.style.top = 0;
+					this.canvas.style.left = 0;
+					document.getElementsByTagName('body')[0].appendChild(this.canvas);
+				}
+				this.ctx = this.canvas.getContext('2d');
+				this.width = this.canvas.width = window.innerWidth;
+				this.height = this.canvas.height = window.innerHeight;
+				// mouse infomation.
+				this.mouseX = null;
+				this.mouseY = null;
+				this.mouseZ = null;
+				// circle
+				this.shapeNum = 100;
+				this.shapes = [];
+				// time
+				this.time = new Time(Date.now());
+				this.clearId = [];
+			}
+
+			// init, render, resize
+			init() {
+				this.shapes = [];
+				const that = this;
+				let p = Promise.resolve();
+				for (let i = 0; i < this.shapeNum; i++) {
+					p = p.then(function() {
+						return new Promise(function(res, rej) {
+							that.clearId.push(
+								setTimeout(function() {
+									const s = new Shape(
+										that.ctx,
+										that.width / 2,
+										(that.height * (Math.random() + Math.random())) / 2,
+										i
+									);
+									that.shapes.push(s);
+									res();
+								}, 240)
+							);
+						});
+					});
+				}
+			}
+
+			render() {
+				this.ctx.clearRect(0, 0, this.width, this.height);
+				for (let i = 0; i < this.shapes.length; i++) {
+					this.shapes[i].render();
+				}
+			}
+
+			resize() {
+				for (let i = 0; i < this.clearId.length; i++) {
+					clearTimeout(this.clearId[i]);
+				}
+				this.width = this.canvas.width = window.innerWidth;
+				this.height = this.canvas.height = window.innerHeight;
+				this.init();
+			}
+		}
+
+		/*
+  Shape class.
+*/
+
+		class Shape {
+			constructor(ctx, x, y, i) {
+				this.ctx = ctx;
+				this.init(x, y, i);
+			}
+
+			init(x, y, i) {
+				this.x = x;
+				this.y = y;
+				this.i = i;
+				this.rate = this.y / canvas.height;
+				this.c = Tool.randomColorHSL(80, 60);
+				this.r = 0;
+				this.maxR = 150 * this.rate;
+				this.ts = 64 * this.rate;
+				this.lw = 10 * this.rate;
+				this.a = new Angle(0);
+				this.a1 = new Angle(0);
+				this.v = {
+					x: 0,
+					y: 1,
+					r: 0,
+					g: Math.random() * 5 * this.rate + 1
+				};
+				this.flg = Math.random() < 0.5 ? true : false;
+			}
+
+			draw() {
+				const ctx = this.ctx;
+				ctx.save();
+				ctx.strokeStyle = this.c;
+				ctx.lineWidth = this.lw;
+				ctx.fillStyle = this.c;
+				this.rotatePoint();
+				ctx.strokeRect(this.x - this.r / 2, this.y - this.r / 2, this.r, this.r);
+				// text
+				ctx.translate(this.x, this.y);
+				ctx.rotate(this.a1.rad);
+				ctx.translate(-this.x, -this.y);
+				ctx.fillStyle = this.c;
+				ctx.font = this.ts + 'px sans-selif';
+				ctx.textAlign = 'center';
+				ctx.textBaseline = 'middle';
+				ctx.fillText(this.i, this.x, this.y);
+				ctx.restore();
+			}
+
+			rotatePoint() {
+				const ctx = this.ctx;
+				if (this.flg === true) {
+					ctx.translate(this.x + this.r / 2, this.y + this.r / 2);
+					ctx.rotate(this.a.rad);
+					ctx.translate(-this.x - this.r / 2, -this.y - this.r / 2);
+				} else {
+					ctx.translate(this.x - this.r / 2, this.y + this.r / 2);
+					ctx.rotate(this.a.rad);
+					ctx.translate(-this.x + this.r / 2, -this.y - this.r / 2);
+				}
+			}
+
+			updateParams() {
+				this.v.g *= 1.005;
+				if (this.flg === true) {
+					if (this.a.a < 90 && this.a.a > 0) {
+						this.a.incDec(this.v.g);
+						this.a1.incDec(-this.v.g);
+					} else {
+						this.a.a = 0;
+						this.a1.a = 0;
+						this.a.incDec(this.v.g);
+						this.a1.incDec(-this.v.g);
+						this.x = this.x + this.r;
+					}
+				} else {
+					if (this.a.a < 0 && this.a.a > -90) {
+						this.a.incDec(-this.v.g);
+						this.a1.incDec(+this.v.g);
+					} else {
+						this.a.a = 0;
+						this.a1.a = 0;
+						this.a.incDec(-this.v.g);
+						this.a1.incDec(+this.v.g);
+						this.x = this.x - this.r;
+					}
+				}
+			}
+
+			wrapPosition() {
+				if (this.x > canvas.width)
+					this.init(canvas.width / 2, Tool.randomNumber(0, canvas.height), this.i);
+				if (this.x + this.r < 0)
+					this.init(canvas.width / 2, Tool.randomNumber(0, canvas.height), this.i);
+			}
+
+			updateSize() {
+				this.v.r += (this.maxR - this.r) * 0.3;
+				this.v.r *= 0.8;
+				this.r += this.v.r;
+			}
+
+			render() {
+				this.draw();
+				this.updateParams();
+				this.wrapPosition();
+				this.updateSize();
+			}
+		}
+
+		(function() {
+			'use strict';
+			window.addEventListener('load', function() {
+				canvas = new Canvas(true);
+				canvas.init();
+
+				function render() {
+					window.requestAnimationFrame(function() {
+						canvas.render();
+						render();
+					});
+				}
+
+				render();
+
+				// event
+				window.addEventListener(
+					'resize',
+					function() {
+						canvas.resize();
+					},
+					false
+				);
+			});
+		})();
+	</script>
+</html>

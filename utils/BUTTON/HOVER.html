@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BUTTON HOVER</title>
+
+  <style> 
+    *{margin:0;padding:0;}
+    div[type]{height:200px;border: 1px solid #5f55af;}
+  </style>
+
+  <style data-type="发送按钮悬停效果"> 
+    #send-btn{display:flex;align-items:center;justify-content:center;height:200px;background:#1c2541;}
+    #send-btn button{background:#5f55af;border:0;border-radius:5px;padding:10px 30px 10px 20px;color:white;text-transform:uppercase;font-weight:bold;}
+    #send-btn button svg{display:inline-block;vertical-align:middle;padding-right:5px;transform:translateX(0%);}
+    #send-btn button:hover svg{animation:fly 2s ease 1;/* animation:fly2 2s ease-in 1;*/}
+    @keyframes fly{0%{transform:translateX(0%);}50%{transform:translateX(300%);}100%{transform:translateX(0);}}
+    @keyframes fly2{0%{transform:translateY(0%);}50%{transform:translateY(-100%);}100%{transform:translateY(0);}}
+  </style> 
+
+  <style data-type="霓虹灯按钮悬停效果"> 
+    #neon-btn{display:flex;align-items:center;justify-content:space-around;background:#031628;height:200px;background:#fff;}
+    #neon-btn .btn{border:1px solid;background-color:transparent;text-transform:uppercase;font-size:14px;padding:10px 20px;font-weight:300;}
+    #neon-btn .one{color:#4cc9f0;}
+    #neon-btn .two{color:#f038ff;}
+    #neon-btn .three{color:#b9e769;}
+    #neon-btn .btn:hover{color:white;border:0;}
+    #neon-btn .one:hover{background-color:#4cc9f0;-webkit-box-shadow:10px 10px 99px 6px rgba(76,201,240,1);-moz-box-shadow:10px 10px 99px 6px rgba(76,201,240,1);box-shadow:10px 10px 99px 6px rgba(76,201,240,1);}
+    #neon-btn .two:hover{background-color:#f038ff;-webkit-box-shadow:10px 10px 99px 6px rgba(240,56,255,1);-moz-box-shadow:10px 10px 99px 6px rgba(240,56,255,1);box-shadow:10px 10px 99px 6px rgba(240,56,255,1);}
+    #neon-btn .three:hover{background-color:#b9e769;-webkit-box-shadow:10px 10px 99px 6px rgba(185,231,105,1);-moz-box-shadow:10px 10px 99px 6px rgba(185,231,105,1);box-shadow:10px 10px 99px 6px rgba(185,231,105,1);}
+  </style> 
+
+  <style data-type="绘制边框按钮悬停效果"> 
+    #draw-border{display:flex;align-items:center;justify-content:center;height:200px;background: #1c2541;}
+    #draw-border button{border:0;background:none;text-transform:uppercase;color:#4361ee;font-weight:bold;position:relative;outline:none;padding:10px 20px;box-sizing:border-box;}
+    #draw-border button::before,#draw-border button::after{box-sizing:inherit;position:absolute;content:'';border:2px solid transparent;width:0;height:0;}
+    #draw-border button::after{bottom:0;right:0;}
+    #draw-border button::before{top:0;left:0;}
+    #draw-border button:hover::before,#draw-border button:hover::after{width:100%;height:100%;}
+    #draw-border button:hover::before{border-top-color:#4361ee;border-right-color:#4361ee;transition:width 0.3s ease-out,height 0.3s ease-out 0.3s;}
+    #draw-border button:hover::after{border-bottom-color:#4361ee;border-left-color:#4361ee;transition:border-color 0s ease-out 0.6s,width 0.3s ease-out 0.6s,height 0.3s ease-out 1s;}
+  </style>
+
+  <style data-type="冻结按钮悬停效果"> 
+    #frozen-btn{display:flex;align-items:center;justify-content:center;height:200px;}
+    #frozen-btn button{border:0;margin:20px;text-transform:uppercase;font-size:20px;font-weight:bold;padding:15px 50px;border-radius:50px;color:white;outline:none;position:relative;}
+    #frozen-btn button:before{content:'';display:block;background:linear-gradient(to left,rgba(255,255,255,0) 50%,rgba(255,255,255,0.4) 50%);background-size:210% 100%;background-position:right bottom;height:100%;width:100%;position:absolute;top:0;bottom:0;right:0;left:0;border-radius:50px;transition:all 1s;-webkit-transition:all 1s;}
+    #frozen-btn .green{background-image:linear-gradient(to right,#25aae1,#40e495);box-shadow:0 4px 15px 0 rgba(49,196,190,0.75);}
+    #frozen-btn .purple{background-image:linear-gradient(to right,#6253e1,#852D91);box-shadow:0 4px 15px 0 rgba(236,116,149,0.75);}
+    #frozen-btn .purple:hover:before{background-position:left bottom;}
+    #frozen-btn .green:hover:before{background-position:left bottom;}
+  </style>
+
+  <style data-type="闪亮的阴影元素按钮悬停效果"> 
+    #shiny-shadow{display:flex;align-items:center;justify-content:center;height:200px;background:#1c2541;}
+    #shiny-shadow button{border:2px solid white;background:transparent;text-transform:uppercase;color:white;padding:15px 50px;outline:none;overflow:hidden;position:relative;}
+    #shiny-shadow span{z-index:20;}
+    #shiny-shadow button:after{content:'';display:block;position:absolute;top:-36px;left:-100px;background:white;width:50px;height:125px;opacity:20%;transform:rotate(-45deg);}
+    #shiny-shadow button:hover:after{left:120%;transition:all 1s cubic-bezier(0.3,1,0.2,1);-webkit-transition:all 1s cubic-bezier(0.3,1,0.2,1);}
+  </style>
+
+  <style data-type="加载按钮悬停效果"> 
+    #loading-btn{display:flex;align-items:center;justify-content:center;height:200px;}
+    #loading-btn .btn0{background:transparent;border:0;border-radius:0;text-transform:uppercase;font-weight:bold;font-size:20px;padding:15px 50px;position:relative;}
+    #loading-btn .btn0:before{transition:all 0.8s cubic-bezier(1,-0.79,0,.91);content:'';width:1%;height:100%;background:#ff5964;position:absolute;top:0;left:0;}
+    #loading-btn .btn0 span{mix-blend-mode:darken;}
+    #loading-btn .btn0:hover:before{background:#ff5964;width:100%;transition:all 0.8s cubic-bezier(1,.15,0,.91);}
+    button{margin:30px 20px;padding:15px 20px;border-radius:10px;border:2px solid;font:16px 'Hover me Sans',sans-serif;text-transform:uppercase;background:none;outline:none;cursor:pointer;-webkit-transition:all .5s;transition:all .5s;}
+    #loading-btn .btn1{color:#A3F7BF;border-color:#A3F7BF;background:-webkit-linear-gradient(left,#a3f7bf,#a3f7bf) no-repeat;background:linear-gradient(to right,#a3f7bf,#a3f7bf) no-repeat;background-size:0% 100%;}
+    #loading-btn .btn1:hover{background-size:100% 100%;color:#27323A;}
+    #loading-btn .btn2{color:#A3F7BF;border-color:#A3F7BF;background:-webkit-linear-gradient(left,#a3f7bf,#a3f7bf) no-repeat;background:linear-gradient(to right,#a3f7bf,#a3f7bf) no-repeat;background-size:100% 0%;}
+    #loading-btn .btn2:hover{background-size:100% 100%;color:#27323A;}
+    #loading-btn .btn3{color:#FFD460;border-color:#FFD460;position:relative;overflow:hidden;}
+    #loading-btn .btn3:before{content:"";position:absolute;top:0;right:-5px;width:0;height:100%;background-color:#FFD460;z-index:-1;-webkit-transition:all .5s;transition:all .5s;}
+    #loading-btn .btn3:hover{color:#27323A;}
+    #loading-btn .btn3:hover:before{width:110%;}
+    #loading-btn .btn4{color:#FFD460;border-color:#FFD460;position:relative;overflow:hidden;}
+    #loading-btn .btn4:before{content:"";position:absolute;top:0;left:-5px;width:0;height:100%;background-color:#FFD460;z-index:-1;-webkit-transition:all .5s;transition:all .5s;}
+    #loading-btn .btn4:after{content:"";position:absolute;top:0;right:-5px;width:0;height:100%;background-color:#FFD460;z-index:-1;-webkit-transition:all .5s;transition:all .5s;}
+    #loading-btn .btn4:hover{color:blue;}
+    #loading-btn .btn4:hover:before{width:60%;}
+    #loading-btn .btn4:hover:after{width:60%;}
+    #loading-btn .btn5{color:#FFD460;border-color:#FFD460;position:relative;overflow:hidden;}
+    #loading-btn .btn5:after{content:"";position:absolute;top:50%;left:0%;transform:translateY(-50%);width:100%;height:0%;background-color:#FFD460;z-index:-1;-webkit-transition:all .5s;transition:all .5s;}
+    #loading-btn .btn5:hover{color:#FF0000;}
+    #loading-btn .btn5:hover:after{height:110%;}
+    #loading-btn .btn6{color:burlywood;border-color:orangered;position:relative;overflow:hidden;}
+    #loading-btn .btn6:after{content:"";display:block;position:absolute;top:-30px;left:-48px;width:110%;height:125%;background:#0000FF;transform:rotate(-45deg) translateY(-70%);transition:all .5s;z-index:-1;}
+    #loading-btn .btn6:before{content:"";display:block;position:absolute;top:15px;right:-30px;width:110%;height:125%;background:#0000FF;transform:rotate(-45deg) translateY(100%);transition:all .5s;z-index:-1;}
+    #loading-btn .btn6:hover{color:#fff;}
+    #loading-btn .btn6:hover:after{transform:rotate(-45deg) translateY(15%);}
+    #loading-btn .btn6:hover:before{transform:rotate(-45deg) translateY(-7%);}
+  </style>
+
+  <style data-type="加载按钮悬停效果"> 
+    #sshadow{display:flex;align-items:center;justify-content:center;height:200px;background:#1c2541;}
+    #sshadow .btn{list-style: none;padding: 30px;margin: 0 auto;}
+    #sshadow .btn li{width: 200px;height: 50px;border: 2px solid #53C2D6;margin: 20px;cursor: pointer;position: relative;overflow: hidden; float: left;}
+    #sshadow .btn li:before{content:"";display:block;background: #53C2D6;transition: 0.3s ease-in-out;position: absolute;z-index: 1;opacity: 0.9;}
+    #sshadow .btn li span{width: 200px;height: 50px;position: absolute; line-height: 50px;text-align: center; color: #53C2D6;z-index: 2;;}
+    #sshadow .btn li:hover span{color: #fff;}
+    #sshadow .btn .btn1:before{width: 220px;height: 200px;border-radius: 50%;top: -75px;left: -10px;transform: scale(0);}
+    #sshadow .btn .btn1:hover:before{transform: scale(1);}
+    #sshadow .btn .btn2:before{width: 200px;height: 50px;top: 0;left: 0;transform: rotateX(90deg);}
+    #sshadow .btn .btn2:hover:before{transform: rotateX(0);}
+    #sshadow .btn .btn3:before{width: 200px;height: 200px;left: 0;top: -75px;transform: rotateZ(-45deg) rotateY(90deg);}
+    #sshadow .btn .btn3:hover:before{transform: rotateZ(-45deg) rotateY(0);}
+    #sshadow .btn .btn4:before{width: 200px;height: 200px;left: 0;top: -75px;transform: rotateZ(45deg) rotateY(90deg);}
+    #sshadow .btn .btn4:hover:before{transform: rotateZ(45deg) rotateY(0);}
+    #sshadow .btn .btn5:before{width: 200px;height: 50px;top: 0;left: 0;transform: rotateY(90deg);}
+    #sshadow .btn .btn5:hover:before{transform: rotateY(0);}
+  </style>
+
+  <style data-type="按钮进入效果">
+    #container {display:flex;align-items:center;justify-content:center;height:200px;}
+    #container button{position:relative;display:inline-block;cursor:pointer;outline:none;border:0;vertical-align:middle;text-decoration:none;background:transparent;padding:0;}
+    #container .learn-more{width:14rem;height:auto;}
+    #container .learn-more .circle{transition:all .45s cubic-bezier(0.65,0,.076,1);position:relative;display:block;margin:0 0 0 -.8rem;width:4rem;height:4rem;background:#282936;border-radius:2rem;}
+    #container .learn-more .circle .icon{transition:all .45s cubic-bezier(0.65,0,.076,1);position:absolute;top:0;bottom:0;margin:auto;background:#fff;}
+    #container .learn-more .circle .icon.arrow{transition:all .45s cubic-bezier(0.65,0,.076,1);left:1.5rem;width:1.25rem;height:1.25rem;background:none;}
+    #container .learn-more .circle .icon.arrow::before{position:absolute;content:'';top:.05rem;right:0.5rem;width:1rem;height:1rem;border-top:0.15rem solid #fff;border-right:0.15rem solid #fff;transform:rotate(45deg);}
+    #container .button-text{transition:all .45s cubic-bezier(0.65,0,.076,1);position:absolute;top:0;left:0;right:0;bottom:0;margin:0 0 0 1.2rem;color:#282936;font-weight:bold;font-size:1.5rem; line-height:4rem;text-align:center;text-transform:uppercase;}
+    #container button:hover .circle{width:100%;}
+    #container button:hover .icon.arrow{background:#fff;transform:translate(.75rem,0);}
+    #container button:hover .button-text{color:#fff;}
+  </style>
+
+  <style data-type="文字翻转效果">
+    .winona {display:flex;align-items:center;justify-content:center;height:200px;background:#1c2541;}
+    .winona .button{float:left;min-width:150px;max-width:250px;display:block;margin:1em;padding:1em 2em;border:none;background:none;color:inherit;vertical-align:middle;position:relative;z-index:1;-webkit-backface-visibility:hidden;-moz-osx-font-smoothing:grayscale;}
+    .winona .button--border-thin{border:1px solid;}
+    .winona .button--border-medium{border:2px solid;}
+    .winona .button--border-thick{border:3px solid;}
+    .winona .button--round-s.button--quidel::after{border-radius:3px;}
+    .winona .button, .winona .button:after, .winona .button:before {-webkit-box-sizing: border-box;box-sizing: border-box;}
+    
+    .winona .button--winona{overflow:hidden;padding:0;-webkit-transition:border-color 0.3s,background-color 0.3s;transition:border-color 0.3s,background-color 0.3s;-webkit-transition-timing-function:cubic-bezier(0..winona 2,1,0.3,1);transition-timing-function:cubic-bezier(0.2,1,0.3,1);}
+    .winona .button--winona::after{content:attr(data-text);position:absolute;width:100%;height:100%;top:0;left:0;opacity:0;color:#3f51b5;-webkit-transform:translate3d(0,25%,0);transform:translate3d(0,25%,0);}
+    .winona .button--winona > span{display:block;}
+    .winona .button--winona.button--inverted{color:#7986cb;}
+    .winona .button--winona.button--inverted:after{color:#fff;}
+    .winona .button--winona::after,.button--winona > span{padding:1em 2em;-webkit-transition:-webkit-transform 0.3s,opacity 0.3s;transition:transform 0.3s,opacity 0.3s;-webkit-transition-timing-function:cubic-bezier(0.2,1,0.3,1);transition-timing-function:cubic-bezier(0.2,1,0.3,1);}
+    .winona .button--winona:hover{border-color:#3f51b5;background-color:rgba(63,81,181,0.1);}
+    .winona .button--winona.button--inverted:hover{border-color:#21333C;background-color:#21333C;}
+    .winona .button--winona:hover::after{opacity:1;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);}
+    .winona .button--winona:hover > span{opacity:0;-webkit-transform:translate3d(0,-25%,0);transform:translate3d(0,-25%,0);}
+  </style>
+
+  <style data-type="文字上下分离效果">
+    .tamaya {display:flex;align-items:center;justify-content:center;height:200px;background:#fff;}
+    .tamaya .button{float:left;min-width:150px;max-width:250px;display:block;margin:1em;padding:1em 2em;border:none;background:none;color:inherit;vertical-align:middle;position:relative;z-index:1;-webkit-backface-visibility:hidden;-moz-osx-font-smoothing:grayscale;}
+    .tamaya .button--border-thin{border:1px solid;}
+    .tamaya .button--border-medium{border:2px solid;}
+    .tamaya .button--border-thick{border:3px solid;}
+    .tamaya .button--round-s.button--quidel::after{border-radius:3px;}
+    .tamaya .button, .tamaya .button:after, .tamaya .button:before {-webkit-box-sizing: border-box;box-sizing: border-box;}
+
+    .tamaya .button--tamaya{overflow:hidden;color:#7986cb;min-width:180px;}
+    .tamaya .button--tamaya.button--inverted{color:#37474f;border-color:#37474f;}
+    .tamaya .button--tamaya::before,.button--tamaya::after{content:attr(data-text);position:absolute;width:100%;height:50%;left:0;background:#7986cb;color:#fff;overflow:hidden;-webkit-transition:-webkit-transform 0.3s;transition:transform 0.3s;-webkit-transition-timing-function:cubic-bezier(0.2,1,0.3,1);transition-timing-function:cubic-bezier(0.2,1,0.3,1);}
+    .tamaya .button--tamaya.button--inverted::before,.button--tamaya.button--inverted::after{background:#fff;color:#37474f;}
+    .tamaya .button--tamaya::before{top:0;padding-top:1em;}
+    .tamaya .button--tamaya::after{bottom:0;line-height:0;}
+    .tamaya .button--tamaya > span{display:block;-webkit-transform:scale3d(0.2,0.2,1);transform:scale3d(0.2,0.2,1);opacity:0;-webkit-transition:-webkit-transform 0.3s,opacity 0.3s;transition:transform 0.3s,opacity 0.3s;-webkit-transition-timing-function:cubic-bezier(0.2,1,0.3,1);transition-timing-function:cubic-bezier(0.2,1,0.3,1);}
+    .tamaya .button--tamaya:hover::before{-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0);}
+    .tamaya .button--tamaya:hover::after{-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0);}
+    .tamaya .button--tamaya:hover > span{opacity:1;-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1);}
+  </style>
+
+  <style data-type="文字进场效果">
+    .rayen {display:flex;align-items:center;justify-content:center;height:200px;background:#1c2541;}
+    .rayen .button{float:left;min-width:150px;max-width:250px;display:block;margin:1em;padding:1em 2em;border:none;background:none;color:inherit;vertical-align:middle;position:relative;z-index:1;-webkit-backface-visibility:hidden;-moz-osx-font-smoothing:grayscale;}
+    .rayen .button--border-thin{border:1px solid;}
+    .rayen .button--border-medium{border:2px solid;}
+    .rayen .button--border-thick{border:3px solid;}
+    .rayen .button--round-s.button--quidel::after{border-radius:3px;}
+    .rayen .button, .rayen .button:after, .rayen .button:before {-webkit-box-sizing: border-box;box-sizing: border-box;}
+
+    .rayen .button--rayen{overflow:hidden;padding:0;width:230px;}
+    .rayen .button--rayen.button--inverted{color:#fff;}
+    .rayen .button--rayen::before{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%;background:#7986cb;-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0);}
+    .rayen .button--rayen.button--inverted::before{background:#fff;color:#37474f;}
+    .rayen .button--rayen > span{display:block;}
+    .rayen .button--rayen::before,.button--rayen > span{padding:1em 2em;-webkit-transition:-webkit-transform 0.3s;transition:transform 0.3s;-webkit-transition-timing-function:cubic-bezier(0.75,0,0.125,1); transition-timing-function:cubic-bezier(0.75,0,0.125,1);}
+    .rayen .button--rayen:hover::before{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);}
+    .rayen .button--rayen:hover > span{-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0);}
+  </style>
+</head>
+<body>
+  <div type="发送按钮悬停效果">
+    <div id="send-btn">
+      <button>
+        <!-- <img src="./images/fasong.png" alt=""> -->
+        <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="icon" width="20px" height="20.00px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path fill="#d81e06" d="M1014.288782 129.308444a42.666667 42.666667 0 0 1 5.802667 45.141334L715.024782 829.610667a42.666667 42.666667 0 0 1-63.146666 16.952889l-234.666667-163.783112a42.666667 42.666667 0 0 1 48.839111-69.973333l193.024 134.741333 245.902222-528.099555L146.875449 408.462222l156.814222 104.248889a42.666667 42.666667 0 0 0 45.056 1.336889l235.719111-137.073778a42.666667 42.666667 0 1 1 42.922667 73.756445l-235.719111 137.102222a128 128 0 0 1-135.253334-4.039111L19.131449 425.984a42.666667 42.666667 0 0 1 13.312-76.942222l938.666667-233.984a42.666667 42.666667 0 0 1 43.207111 14.250666h-0.056889zM481.439004 686.876444a42.666667 42.666667 0 0 1 1.934223 60.302223l-153.514667 163.783111A42.666667 42.666667 0 0 1 256.045227 881.777778v-163.811556a42.666667 42.666667 0 1 1 85.333333 0v55.893334l79.786667-85.048889a42.666667 42.666667 0 0 1 60.302222-1.934223z" /></svg>
+        Send
+      </button>
+    </div>
+  </div>
+
+  <div type="霓虹灯按钮悬停效果">
+    <div id="neon-btn">
+      <button class="btn one">Hover me</button>
+      <button  class="btn two">Hover me</button>
+      <button  class="btn three">Hover me</button>
+    </div>
+  </div>
+  
+  <div type="绘制边框按钮悬停效果">
+    <div id="draw-border">
+      <button>Hover me</button>
+    </div>
+  </div>
+
+  <div type="冻结按钮悬停效果">
+    <div id="frozen-btn">
+      <button class="green">Hover me</button>
+      <button class="purple">Hover me</button>
+    </div>
+  </div>
+
+  <div type="闪亮的阴影元素按钮悬停效果">
+    <div id="shiny-shadow">
+      <button><span>Hover me</span></button>
+    </div>
+  </div>
+
+  <div type="加载按钮悬停效果">
+    <div id="loading-btn">
+      <button class="btn0"><span>Hover me</span></button>
+      <button class="btn1">Hover me</button>
+      <button class="btn2">Hover me</button>
+      <button class="btn3">Hover me</button>
+      <button class="btn4">Hover me</button>
+      <button class="btn5">Hover me</button>
+      <button class="btn6">Hover me</button>
+    </div>
+  </div>
+
+  <div type="加载按钮悬停效果">
+    <div id="sshadow">
+      <ul class="btn">
+        <li class="btn1">
+          <span>Hover me</span>
+        </li>
+        <li class="btn2">
+          <span>Hover me</span>
+        </li>
+        <li class="btn3">
+          <span>Hover me</span>
+        </li>
+        <li class="btn4">
+          <span>Hover me</span>
+        </li>
+        <li class="btn5">
+          <span>Hover me</span>
+        </li>
+        </ul>
+    </div>
+  </div>
+
+  <div type="按钮进入效果">
+    <div id="container">
+      <button class="learn-more">
+        <span class="circle" aria-hidden="true">
+          <span class="icon arrow"></span>
+        </span>
+        <span class="button-text">Hover me</span>
+      </button>
+  </div>
+  
+  </div>
+
+  <div type="文字翻转效果">
+    <div class="winona">
+      <button class="button button--winona button--border-thin button--round-s" data-text="Hover me"><span>Hover me</span></button>
+      <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="Hover me"><span>Hover me</span></button>
+      <button class="button button--winona button--border-thin button--text-thick button--inverted" data-text="Hover me"><span>Hover me</span></button>
+    </div>
+  </div>
+
+  <div type="文字上下分离效果">
+    <div class="tamaya">
+      <button class="button button--tamaya button--border-thick" data-text="Hover me"><span>Hover me</span></button>
+      <button class="button button--tamaya button--round-l button--text-thick button--border-medium button--text-upper button--size-s button--inverted" data-text="Hover me"><span>Hover me</span></button>
+      <button class="button button--tamaya button--round-s button--text-thick button--border-thin" data-text="Hover me"><span>Hover me</span></button>
+    </div>
+  </div>
+
+  <div type="文字进场效果">
+    <div class="rayen">
+      <button class="button button--rayen button--border-thin button--text-thick button--text-upper button--size-s" data-text="Hover me"><span>Hover me</span></button>
+      <button class="button button--rayen button--border-medium button--text-thin button--size-l button--inverted" data-text="Hover me"><span>Hover me</span></button>
+      <button class="button button--rayen button--border-thick button--text-thick" data-text="Hover me"><span>Hover me</span></button>
+    </div>
+  </div>
+</body>
+</html>

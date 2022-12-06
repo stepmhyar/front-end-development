@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!-- saved from url=(0019)http://csslint.net/ -->
+<html lang="en" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>CSS Lint</title>
+
+    <link rel="stylesheet" href="./CSS_Lint_files/style.css">
+    <link rel="stylesheet" href="./CSS_Lint_files/sunlight.default.css">
+<meta name="chromesniffer" id="chromesniffer_meta" content="{&quot;Google Analytics&quot;:-1,&quot;jQuery&quot;:&quot;1.12.4&quot;}"><script type="text/javascript" src="chrome-extension://fhhdlnnepfjhlhilgmeepgkhjmhhhjkh/js/detector.js"></script><link type="text/css" rel="stylesheet" charset="UTF-8" href="./CSS_Lint_files/translateelement.css"></head>
+
+<body>
+    <div class="head">
+        <div class="page">
+            <div class="unit size1of2">
+                <h1 class="logo">CSS <strong>LINT</strong></h1>
+            </div>
+            <div class="unit size1of2 lastUnit">
+                <div class="intro">
+                    <p>Will hurt your feelings<a href="http://www.jslint.com/">*</a></p>
+                    <p>(And help you code better)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="page">
+            <div class="loadingMessage">
+                <div class="line">
+                    <div class="unit size1of2">
+                        <p class="summary">Doin' the lint thang... <img src="./CSS_Lint_files/loading.gif" alt="Loading" width="220" height="19"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="resultsSummary">
+                <div class="line">
+                    <div class="unit size1of2">
+                        <p class="summary">CSS lint found <strong class="errorCount">0</strong> errors and <strong class="warningCount">2</strong> warnings. <span id="fix-it">How can you fix it? See the details below.</span></p>
+                    </div>
+                    <div class="unit size1of2 lastUnit">
+                        <a class="bigButton" href="http://csslint.net/index.html" id="restart-btn">Restart</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- form to submit css for linting -->
+            <form id="in">
+                <div class="line">
+                    <label for="input" class="summary">Your CSS goes here. The more, the better. Linting works best when we see the big picture, so give us everything you've got.</label>
+                    <textarea id="input" name="css" class="css"></textarea>
+
+
+                    <div class="btn open" id="options">
+                        <ul class="btnList">
+                            <li class="submit"><a href="http://csslint.net/#" id="lint">Lint!</a></li><li class="options"><a id="showOptions"><span class="textEquiv">Options</span><b class="arrow"></b></a></li>    <!-- must be on one line -->
+                        </ul>
+                        <div class="btnDrop">
+
+                            <p class="summary mvm pvn">You can pick and choose which errors and warnings to test for below. <sup><a class="globalSelectAll">(All)</a> | <a class="globalSelectNone">(None)</a></sup></p>
+                            <div class="line">
+                                <div class="unit size1of3">
+                                    <h3>Errors <sup><a class="groupSelectAll">(All)</a> | <a class="groupSelectNone">(None)</a></sup></h3>
+                                    <ul class="optionsList">
+                                        <li><label><input type="checkbox" name="box-model" checked="">&nbsp;Beware of broken box sizing</label></li>
+                                        <li><label><input type="checkbox" name="display-property-grouping" checked="">&nbsp;Require properties appropriate for <code>display</code></label></li>
+                                        <li><label><input type="checkbox" name="duplicate-properties" checked="">&nbsp;Disallow duplicate properties</label></li>
+                                        <li><label><input type="checkbox" name="empty-rules" checked="">&nbsp;Disallow empty rules</label></li>
+                                        <li><label><input type="checkbox" name="known-properties" checked="">&nbsp;Require use of known properties</label></li>
+                                    </ul>
+                                </div>
+                                <div class="unit size1of3">
+                                    <h3>Compatibility <sup><a class="groupSelectAll">(All)</a> | <a class="groupSelectNone">(None)</a></sup></h3>
+                                    <ul class="optionsList">
+                                        <li><label><input type="checkbox" name="adjoining-classes" checked="">&nbsp;Disallow adjoining classes</label></li>
+                                        <li><label><input type="checkbox" name="box-sizing" checked="">&nbsp;Disallow <code>box-sizing</code></label></li>
+                                        <li><label><input type="checkbox" name="compatible-vendor-prefixes" checked="">&nbsp;Require compatible vendor prefixes</label></li>
+                                        <li><label><input type="checkbox" name="gradients" checked="">&nbsp;Require all gradient definitions</label></li>
+                                        <li><label><input type="checkbox" name="text-indent" checked="">&nbsp;Disallow negative <code>text-indent</code></label></li>
+                                        <li><label><input type="checkbox" name="vendor-prefix" checked="">&nbsp;Require standard property with vendor prefix</label></li>
+                                        <li><label><input type="checkbox" name="fallback-colors" checked="">&nbsp;Require fallback colors</label></li>
+                                        <li><label><input type="checkbox" name="star-property-hack" checked="">&nbsp;Disallow star hack</label></li>
+                                        <li><label><input type="checkbox" name="underscore-property-hack" checked="">&nbsp;Disallow underscore hack</label></li>
+                                        <li><label><input type="checkbox" name="bulletproof-font-face" checked="">&nbsp;Bullet-proof @font-face</label><img src="./CSS_Lint_files/new.png" alt="(New)" width="16" height="16"></li>
+                                    </ul>
+                                </div>
+                                <div class="unit size1of3 lastUnit">
+                                    <h3>Performance <sup><a class="groupSelectAll">(All)</a> | <a class="groupSelectNone">(None)</a></sup></h3>
+                                    <ul class="optionsList">
+                                        <li><label><input type="checkbox" name="font-faces" checked="">&nbsp;Don't use too many web fonts</label></li>
+                                        <li><label><input type="checkbox" name="import" checked="">&nbsp;Disallow <code>@import</code></label></li>
+                                        <li><label><input type="checkbox" name="duplicate-background-images" checked="">&nbsp;Disallow duplicate background images</label></li>
+                                        <li><label><input type="checkbox" name="regex-selectors" checked="">&nbsp;Disallow selectors that look like regexs</label></li>
+                                        <li><label><input type="checkbox" name="universal-selector" checked="">&nbsp;Disallow universal selector</label></li>
+                                        <li><label><input type="checkbox" name="unqualified-attributes" checked="">&nbsp;Disallow unqualified attribute selectors</label></li>
+                                        <li><label><input type="checkbox" name="zero-units" checked="">&nbsp;Disallow units for 0 values</label></li>
+                                        <li><label><input type="checkbox" name="overqualified-elements" checked="">&nbsp;Disallow overqualified elements</label></li>
+                                        <li><label><input type="checkbox" name="shorthand" checked="">&nbsp;Require shorthand properties</label></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="line">
+                                <div class="unit size1of3">
+                                    <h3>Maintainability &amp; Duplication <sup><a class="groupSelectAll">(All)</a> | <a class="groupSelectNone">(None)</a></sup></h3>
+                                    <ul class="optionsList">
+                                        <li><label><input type="checkbox" name="floats" checked="">&nbsp;Disallow too many floats</label></li>
+                                        <li><label><input type="checkbox" name="font-sizes" checked="">&nbsp;Don't use too many font sizes</label></li>
+                                        <li><label><input type="checkbox" name="ids" checked="">&nbsp;Disallow IDs in selectors</label></li>
+                                        <li><label><input type="checkbox" name="important" checked="">&nbsp;Disallow <code>!important</code></label></li>
+                                    </ul>
+                                </div>
+                                <div class="unit size1of3">
+                                    <h3>Accessibility <sup><a class="groupSelectAll">(All)</a> | <a class="groupSelectNone">(None)</a></sup></h3>
+                                    <ul class="optionsList">
+                                        <li><label><input type="checkbox" name="outline-none" checked="">&nbsp;Disallow <code>outline:none</code></label></li>
+                                    </ul>
+                                </div>
+                                <div class="unit size1of3 lastUnit">
+                                    <h3>OOCSS <sup><a class="groupSelectAll">(All)</a> | <a class="groupSelectNone">(None)</a></sup></h3>
+                                    <ul class="optionsList">
+                                        <li><label><input type="checkbox" name="qualified-headings" checked="">&nbsp;Disallow qualified headings</label></li>
+                                        <li><label><input type="checkbox" name="unique-headings" checked="">&nbsp;Heading should only be defined once</label></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a class="right" href="https://github.com/CSSLint/csslint/wiki/Rules">Learn More About the Rules</a>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="foot">
+        <div class="page">
+            <ul class="inlineList piped footList">
+                <li><a href="https://github.com/CSSLint/csslint/wiki/About">About</a></li>
+                <li><a href="https://github.com/CSSLint/csslint/wiki/Developer-Guide">Contribute</a></li>
+                <li><a href="https://github.com/CSSLint/csslint">Source</a></li>
+                <li><a href="https://github.com/CSSLint/csslint/wiki/Command-line-interface">Node/Rhino CLI</a></li>
+                <li><a href="https://github.com/CSSLint/csslint/wiki">Documentation</a></li>
+            </ul>
+
+            <div class="mod" id="errorViewWrapper">
+                <div class="inner">
+                    <div class="bd">
+                        <div class="data results">
+                            <div id="errorView_wrapper" class="dataTables_wrapper" role="grid"><div class="dataTables_filter" id="errorView_filter"><label>Search: <input type="text" aria-controls="errorView"></label></div><table id="errorView" class="dataTable">
+                                <thead>
+                                    <tr class="codeHd" role="row"><th scope="col" title="ascending by type" class="sorting_asc" role="columnheader" tabindex="0" aria-controls="errorView" rowspan="1" colspan="1" aria-sort="ascending" aria-label=": activate to sort column descending"></th><th scope="col" class="sorting" role="columnheader" tabindex="0" aria-controls="errorView" rowspan="1" colspan="1" aria-label="line : activate to sort column ascending">line </th><th scope="col" class="sorting" role="columnheader" tabindex="0" aria-controls="errorView" rowspan="1" colspan="1" aria-label="column: activate to sort column ascending">column</th><th scope="col" class="sorting" role="columnheader" tabindex="0" aria-controls="errorView" rowspan="1" colspan="1" aria-label="title: activate to sort column ascending">title</th><th scope="col" class="sorting" role="columnheader" tabindex="0" aria-controls="errorView" rowspan="1" colspan="1" aria-label="description: activate to sort column ascending">description</th><th scope="col" class="sorting" role="columnheader" tabindex="0" aria-controls="errorView" rowspan="1" colspan="1" aria-label="browser: activate to sort column ascending">browser</th></tr>
+                                </thead>
+                                
+                            <tbody id="errors" role="alert" aria-live="polite" aria-relevant="all"><tr class="L28 odd"><td class="  sorting_1"><img title="warning" alt="warning" src="./CSS_Lint_files/warn.png" width="15px" height="15px"></td><td class=" ">28</td><td class=" ">5</td><td class=" ">Beware of broken box size</td><td class=" ">Using height with border can sometimes make elements larger than you expect.<pre>				border: 1px solid #ccc;</pre></td><td class=" ">All</td></tr><tr class="L28 even"><td class="  sorting_1"><img title="warning" alt="warning" src="./CSS_Lint_files/warn.png" width="15px" height="15px"></td><td class=" ">28</td><td class=" ">5</td><td class=" ">Beware of broken box size</td><td class=" ">Using width with border can sometimes make elements larger than you expect.<pre>				border: 1px solid #ccc;</pre></td><td class=" ">All</td></tr></tbody></table></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- insert in this table -->
+            <div class="mod codeBox mtl" id="codeViewWrapper">
+                <div class="inner">
+                    <div class="hd codeHd">
+                        <div class="media man">
+                            <a class="img fileType"><img src="./CSS_Lint_files/paper16.png" alt="" width="16" height="16"></a>
+
+                            <div class="bd">
+                                <ul class="inlineList piped">
+                                    <li><span class="lineCount">31</span> lines</li>
+                                    <li><span class="errorCount">0</span> errors</li>
+                                    <li><span class="warningCount">2</span> warnings</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bd">
+                        <div class="data codeView">
+                            <table id="codeView">
+                                <colgroup><col class="lineNum">
+                                <col class="lineCode">
+                                </colgroup><tbody id="tableBody"><tr id="L1" class=""><th>1</th><td><span class="sunlight-css"><span class="sunlight-element">html</span><span class="sunlight-punctuation">,</span></span></td></tr><tr id="L2" class=""><th>2</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-element">body</span><span class="sunlight-punctuation">,</span></td></tr><tr id="L3" class=""><th>3</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-element">form</span><span class="sunlight-punctuation">,</span></td></tr><tr id="L4" class=""><th>4</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-element">fieldset</span><span class="sunlight-punctuation">,</span></td></tr><tr id="L5" class=""><th>5</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-element">textarea</span>&nbsp;<span class="sunlight-punctuation">{</span></td></tr><tr id="L6" class=""><th>6</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-keyword">margin</span><span class="sunlight-operator">:</span>&nbsp;<span class="sunlight-number">0</span><span class="sunlight-punctuation">;</span></td></tr><tr id="L7" class=""><th>7</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-keyword">padding</span><span class="sunlight-operator">:</span>&nbsp;<span class="sunlight-number">0</span><span class="sunlight-punctuation">;</span></td></tr><tr id="L8" class=""><th>8</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-keyword">border</span><span class="sunlight-operator">:</span>&nbsp;<span class="sunlight-number">0</span><span class="sunlight-punctuation">;</span></td></tr><tr id="L9" class=""><th>9</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-keyword">font-size</span><span class="sunlight-operator">:</span>&nbsp;<span class="sunlight-number">10pt</span><span class="sunlight-punctuation">;</span></td></tr><tr id="L10" class=""><th>10</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-keyword">background</span><span class="sunlight-operator">:</span>&nbsp;<span class="sunlight-hexColor">#eee</span><span class="sunlight-punctuation">;</span></td></tr><tr id="L11" class=""><th>11</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-punctuation">}</span></td></tr><tr id="L12" class=""><th>12</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-element">form</span>&nbsp;<span class="sunlight-punctuation">{</span></td></tr><tr id="L13" class=""><th>13</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-keyword">margin</span><span class="sunlight-operator">:</span>&nbsp;<span class="sunlight-number">0</span>&nbsp;<span class="sunlight-number">1%</span><span class="sunlight-punctuation">;</span></td></tr><tr id="L14" class=""><th>14</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-keyword">overflow</span><span class="sunlight-operator">:</span>&nbsp;<span class="sunlight-ident">hidden</span><span class="sunlight-punctuation">;</span></td></tr><tr id="L15" class=""><th>15</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-punctuation">}</span></td></tr><tr id="L16" class=""><th>16</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-element">legend</span>&nbsp;<span class="sunlight-punctuation">{</span></td></tr><tr id="L17" class=""><th>17</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-keyword">line-height</span><span class="sunlight-operator">:</span>&nbsp;<span class="sunlight-number">3em</span><span class="sunlight-punctuation">;</span></td></tr><tr id="L18" class=""><th>18</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-keyword">font-weight</span><span class="sunlight-operator">:</span>&nbsp;<span class="sunlight-ident">bolder</span><span class="sunlight-punctuation">;</span></td></tr><tr id="L19" class=""><th>19</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-punctuation">}</span></td></tr><tr id="L20" class=""><th>20</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-element">button</span>&nbsp;<span class="sunlight-punctuation">{</span></td></tr><tr id="L21" class=""><th>21</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-keyword">float</span><span class="sunlight-operator">:</span>&nbsp;<span class="sunlight-keyword">left</span><span class="sunlight-punctuation">;</span></td></tr><tr id="L22" class=""><th>22</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-keyword">margin</span><span class="sunlight-operator">:</span>&nbsp;<span class="sunlight-number">1%</span>&nbsp;<span class="sunlight-number">1%</span>&nbsp;<span class="sunlight-number">0</span>&nbsp;<span class="sunlight-number">0</span><span class="sunlight-punctuation">;</span></td></tr><tr id="L23" class=""><th>23</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-keyword">cursor</span><span class="sunlight-operator">:</span>&nbsp;<span class="sunlight-ident">pointer</span><span class="sunlight-punctuation">;</span></td></tr><tr id="L24" class=""><th>24</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-punctuation">}</span></td></tr><tr id="L25" class=""><th>25</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-element">textarea</span>&nbsp;<span class="sunlight-punctuation">{</span></td></tr><tr id="L26" class=""><th>26</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-keyword">width</span><span class="sunlight-operator">:</span>&nbsp;<span class="sunlight-number">100%</span><span class="sunlight-punctuation">;</span></td></tr><tr id="L27" class=""><th>27</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-keyword">height</span><span class="sunlight-operator">:</span>&nbsp;<span class="sunlight-number">20em</span><span class="sunlight-punctuation">;</span></td></tr><tr id="L28" class=" error L28"><th>28</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-keyword">border</span><span class="sunlight-operator">:</span>&nbsp;<span class="sunlight-number">1px</span>&nbsp;<span class="sunlight-ident">solid</span>&nbsp;<span class="sunlight-hexColor">#ccc</span><span class="sunlight-punctuation">;</span></td></tr><tr id="L29" class=""><th>29</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-keyword">display</span><span class="sunlight-operator">:</span>&nbsp;<span class="sunlight-ident">block</span><span class="sunlight-punctuation">;</span></td></tr><tr id="L30" class=""><th>30</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-keyword">background</span><span class="sunlight-operator">:</span>&nbsp;<span class="sunlight-hexColor">#fff</span><span class="sunlight-punctuation">;</span></td></tr><tr id="L31" class=""><th>31</th><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sunlight-punctuation">}</span></td></tr></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="output"></div>
+            <hr>
+            <ul class="inlineList piped footList">
+                <li><a href="https://www.nczonline.net/">Nicholas</a></li>
+                <li><a href="http://www.stubbornella.org/">Nicole</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="./CSS_Lint_files/analytics.js"></script>
+    <script src="./CSS_Lint_files/jquery.min.js"></script>
+    <!-- <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script> -->
+    <script src="./CSS_Lint_files/jquery.dataTables.min.js"></script>
+    <script src="./CSS_Lint_files/jquery.ba-hashchange.js"></script>
+    <script src="./CSS_Lint_files/sunlight-min.js"></script>
+    <script src="./CSS_Lint_files/sunlight.css-min.js"></script>
+    <script src="./CSS_Lint_files/csslint.js"></script>
+    <script src="./CSS_Lint_files/csslint-ui.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','./CSS_Lint_files/analytics.js','ga');
+        ga('create', 'UA-25221469-1', 'csslint.net');
+        ga('send', 'pageview');
+    </script><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="./CSS_Lint_files/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>
