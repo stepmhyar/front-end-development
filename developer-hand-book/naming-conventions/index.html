@@ -106,12 +106,6 @@
 
 $('.top').click(function(params) {$('html, body').stop().animate({scrollTop:0},200);return false;})
 function init(elem, callback){
-  var btn = '';
-  if(elem){
-      btn = elem.selector;
-  } else {
-      btn = '.copy';
-  }
   if(window.clipboardData){
       $('body').on('click', elem, function(){
           var text = $(this).attr("data-clipboard-text");
